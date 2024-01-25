@@ -14,17 +14,15 @@ import java.util.Optional;
 @Controller
 public class LoginController {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
     @Autowired
     loginService loginService;
 
     @GetMapping("/")
     public String login() {
-
-        String name= loginService.findByUserName("wat");
+        loginDto loginDto = new loginDto();
+        loginDto.setUserId("wat");
+        String name= loginService.findByUserName(loginDto);
         System.err.println(name);
-        logger.error("Name: {}", name);
 
         return "index";
     }

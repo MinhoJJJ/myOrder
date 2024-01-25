@@ -12,8 +12,8 @@ public class loginServiceImpl implements loginService {
 
     @Autowired
     MemberRepository memberRepository;
-    public String findByUserName(String userId) {
-        System.err.println(userId);
+    public String findByUserName(loginDto loginDto) {
+        String userId=loginDto.getUserId();
         Member member = memberRepository.findByUserId(userId);
         String userName =member.getUserName();
         return userName;
