@@ -1,9 +1,6 @@
 package com.myOrder.dto;
 
-import com.myOrder.entity.Member;
-import jakarta.persistence.Column;
-
-public class loginDto {
+public class memberDto {
     private String userId;     //유저아이디
     private String userPw;     //유저패스워드
     private String userName;     //유저이름

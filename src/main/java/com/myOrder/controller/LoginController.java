@@ -1,15 +1,10 @@
 package com.myOrder.controller;
 
-import com.myOrder.dto.loginDto;
-import com.myOrder.entity.Member;
+import com.myOrder.dto.memberDto;
 import com.myOrder.service.loginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.Optional;
 
 @Controller
 public class LoginController {
@@ -19,9 +14,9 @@ public class LoginController {
 
     @GetMapping("/")
     public String login() {
-        loginDto loginDto = new loginDto();
-        loginDto.setUserId("wat");
-        String name= loginService.findByUserName(loginDto);
+        memberDto memberDto = new memberDto();
+        memberDto.setUserId("wat");
+        String name= loginService.findByUserName(memberDto);
         System.err.println(name);
 
         return "index";

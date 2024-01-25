@@ -1,12 +1,9 @@
 package com.myOrder.repositories;
 
-import com.myOrder.dto.loginDto;
 import com.myOrder.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 //import com.querydsl.jpa.impl.JPAQueryFactory;
 
-import java.util.List;
-import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
     Member findByUserId(String userId);
