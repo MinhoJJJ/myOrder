@@ -1,5 +1,14 @@
 spring:
-mvc:
-view:
-prefix: /templates/
-suffix: .html
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+  datasource:
+    url: jdbc:postgresql://localhost:5432/smartOrder
+    username: minho
+    password: 1234
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
