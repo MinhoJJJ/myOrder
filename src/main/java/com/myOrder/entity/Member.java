@@ -1,19 +1,17 @@
 package com.myOrder.entity;
 
-
-import jakarta.persistence.*;
 import lombok.*;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "user_info")
 @Getter
 @Setter
-//@NoArgsConstructor
 public class Member {
 
     @Id
     @Column(name = "user_id")
-  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String userId;
 
     @Column(name = "user_pw")
