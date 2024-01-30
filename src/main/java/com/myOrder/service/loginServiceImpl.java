@@ -13,7 +13,7 @@ public class loginServiceImpl implements loginService {
     MemberRepository memberRepository;
     public String findByUserName(memberDto memberDto) {
         String userId= memberDto.getUserId();
-        Member member = memberRepository.findByUserId(userId);
+        Member member = memberRepository.findByUserId2(userId);
         String userName =member.getUserName();
         return userName;
     }
