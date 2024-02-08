@@ -2,12 +2,11 @@ package com.myOrder.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@Configuration          //스프링 기반의 설정파일
 @RequiredArgsConstructor
 public class QuerydslConfig {
 
