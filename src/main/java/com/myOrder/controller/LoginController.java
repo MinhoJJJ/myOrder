@@ -19,6 +19,6 @@ public class LoginController {
         String name= loginService.findByUserName(memberDto);
         System.err.println(name);
 
-        return "index";
+        return "/login/loginForm.html";
     }
 }
