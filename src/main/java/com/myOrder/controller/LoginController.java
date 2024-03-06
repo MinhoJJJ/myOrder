@@ -1,24 +1,49 @@
 package com.myOrder.controller;
 
 import com.myOrder.dto.memberDto;
+import com.myOrder.entity.Member;
 import com.myOrder.service.loginService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import java.util.HashMap;
+
+@RestController
 public class LoginController {
 
     @Autowired
     loginService loginService;
 
-    @GetMapping("/")
-    public String login() {
-        memberDto memberDto = new memberDto();
-        memberDto.setUserId("wat");
-        String name= loginService.findByUserName(memberDto);
-        System.err.println(name);
+    @RequestMapping("/login/login.do")
+    public HashMap<String, Object> login(memberDto memberDto) throws Exception {
 
-        return "/login/loginForm.html";
+        HashMap<String, Object> resultMap = new HashMap<String, Object>();
+
+        // 아이디 비밀번호 체크
+        resultMap= loginService.findByUserInfo(memberDto);
+//        return new ResponseEntity<>(resultMap, HttpStatus.OK);
+        return resultMap;
+    }
+
+    @RequestMapping("/main.do")
+    public ModelAndView start(@RequestParam(value = "error", required = false) String error,
+                @RequestParam(value = "exception", required = false) String exception) {
+
+            ModelAndView modelAndView;
+            modelAndView = new ModelAndView("login/main");
+
+            modelAndView.addObject("error", error);
+            modelAndView.addObject("exception", exception);
+            return modelAndView;
     }
 }

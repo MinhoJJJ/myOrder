@@ -1,7 +1,9 @@
 package com.myOrder.repositories;
 
+import com.myOrder.dto.memberDto;
 import com.myOrder.entity.Member;
 
 public interface CustomMemberRepository {
-    Member findByUserId2(String userId);
+    Member findByUserId(memberDto memberDto);
+    Member findByUserPw(memberDto memberDto);
 }

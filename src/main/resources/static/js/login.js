@@ -61,5 +61,30 @@ function start() {
         const properties = [props.leftM120, props.opacity1, props.opacity1, props.opacity1, props.opacity1, `${props.opacity0} ${props.trnsDelay0} ${props.zIndex0}`, `${props.opacity0} ${props.trnsDelay0} ${props.zIndex0}`]
         transition(elms, properties)
     }
+    // 따로 추가된 부분
+    $("#loginButton").click(function(){
+        // 입력된 사용자명과 비밀번호 가져오기
+        var userId = $("#login-userid").val();
+        var userPw = $("#login-password").val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/login/login.do',
+            async : false,
+            dataType: 'json',
+            data : {userId : userId , userPw: userPw},
+            success: function (json) {
+                console.log(json.result);
+                if(json.result =="F"){
+                    alert(json.message);
+                }else{
+                    alert("로그인 성공");
+                    window.location.href = "/main.do";
+                }
+            },error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert("로그인실패.");
+            }
+        });
+    });
 
 }
