@@ -62,6 +62,8 @@ function start() {
         transition(elms, properties)
     }
     // 따로 추가된 부분
+
+    // 로그인 버튼 클릭시
     $("#loginButton").click(function(){
         // 입력된 사용자명과 비밀번호 가져오기
         var userId = $("#login-userid").val();
@@ -83,6 +85,32 @@ function start() {
                 }
             },error: function(XMLHttpRequest, textStatus, errorThrown){
                 alert("로그인실패.");
+            }
+        });
+    });
+    // 회원가입 버튼 클릭시
+    $("#signupButton").click(function(){
+        // 입력된 사용자명과 비밀번호 가져오기
+        var userId = $("#signup-id").val();
+        var userPw = $("#signup-password").val();
+        var userName = $("#signup-username").val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/login/signUp.do',
+            async : false,
+            dataType: 'json',
+            data : {userId : userId , userPw: userPw , userName: userName},
+            success: function (json) {
+                console.log(json.result);
+                if(json.result =="F"){
+                    alert(json.message);
+                }else{
+                    alert("회원가입 성공");
+                    window.location.href = "/";
+                }
+            },error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert("회원가입 실패.");
             }
         });
     });

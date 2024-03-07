@@ -47,17 +47,8 @@ public class LoginController {
     @RequestMapping("/login/signUp.do")
     public HashMap<String, Object> signUp(memberDto memberDto,HttpServletRequest request) throws Exception {
 
-
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
-
-        // 아이디 비밀번호 체크
-        resultMap = loginService.findByUserInfo(memberDto);
-
-        if(resultMap.get("result").equals("S")){
-            HttpSession session = request.getSession(true);
-            session.setAttribute("userName", resultMap.get("userName"));
-        }
-//        return new ResponseEntity<>(resultMap, HttpStatus.OK);
+        resultMap=loginService.signUpMember(memberDto);
         return resultMap;
     }
 
