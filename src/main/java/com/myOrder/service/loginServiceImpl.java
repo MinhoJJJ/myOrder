@@ -29,6 +29,7 @@ public class loginServiceImpl implements loginService {
                 }else{
                     message="로그인성공.";
                     result="S";
+                    resultMap.put("userName",member.getUserName());
                 }
             }else{
                 message="아이디를 잘못 입력하셨습니다.";
@@ -36,6 +37,7 @@ public class loginServiceImpl implements loginService {
             }
             resultMap.put("message",message);
             resultMap.put("result",result);
+
 
         return resultMap;
     }
