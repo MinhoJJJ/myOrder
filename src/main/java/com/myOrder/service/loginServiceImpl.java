@@ -27,7 +27,7 @@ public class loginServiceImpl implements loginService {
                     message="패스워드를 잘못 입력하셨습니다.";
                     result="F";
                 }else{
-                    message="로그인성공.";
+                    message="로그인 성공";
                     result="S";
                     resultMap.put("userName",member.getUserName());
                 }
@@ -56,7 +56,7 @@ public class loginServiceImpl implements loginService {
         }else{
             int chk=memberRepository.insertMember(memberDto);
             if(chk > 0){
-                message="아이디를 잘못 입력하셨습니다.";
+                message="회원가입에 성공하였습니다..";
                 result="S";
             }else{
                 message="회원가입에 실패하였습니다.";

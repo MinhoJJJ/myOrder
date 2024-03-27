@@ -80,7 +80,7 @@ function start() {
                 if(json.result =="F"){
                     alert(json.message);
                 }else{
-                    alert("로그인 성공");
+                    alert(json.message);
                     window.location.href = "/main.do";
                 }
             },error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -106,7 +106,7 @@ function start() {
                 if(json.result =="F"){
                     alert(json.message);
                 }else{
-                    alert("회원가입 성공");
+                    alert(json.message);
                     window.location.href = "/";
                 }
             },error: function(XMLHttpRequest, textStatus, errorThrown){

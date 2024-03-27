@@ -36,6 +36,7 @@ public class LoginController {
         // 아이디 비밀번호 체크
         resultMap = loginService.findByUserInfo(memberDto);
 
+        // 로그인 성공시 유저네임 세션부여
         if(resultMap.get("result").equals("S")){
             HttpSession session = request.getSession(true);
             session.setAttribute("userName", resultMap.get("userName"));
@@ -53,8 +54,7 @@ public class LoginController {
     }
 
     @RequestMapping("/main.do")
-    public ModelAndView start(@RequestParam(value = "error", required = false) String error,
-                @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
+    public ModelAndView start(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
 
             ModelAndView modelAndView;
             modelAndView = new ModelAndView("login/main");
