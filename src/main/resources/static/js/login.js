@@ -76,15 +76,20 @@ function start() {
             dataType: 'json',
             data : {userId : userId , userPw: userPw},
             success: function (json) {
-                console.log(json.result);
+                console.log(json);
                 if(json.result =="F"){
                     alert(json.message);
                 }else{
                     alert(json.message);
-                    window.location.href = "/main.do";
+                    window.location.href = "/login/main.do";
                 }
             },error: function(XMLHttpRequest, textStatus, errorThrown){
-                alert("로그인실패.");
+                alert("로그인실패");
+                console.log(XMLHttpRequest);
+                console.log("-----------------");
+                console.log(textStatus);
+                console.log("-----------------");
+                console.log(errorThrown);
             }
         });
     });
