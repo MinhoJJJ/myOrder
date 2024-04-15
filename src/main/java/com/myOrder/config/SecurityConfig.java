@@ -28,7 +28,7 @@ public class SecurityConfig {
                 )
                 .formLogin(login -> login
                         .loginPage("/")
-                        .loginProcessingUrl("/login.do")   //안타짐
+                        .loginProcessingUrl("login.do")   //login 말고 login을 해야 정상적으로 작동
                         .usernameParameter("id")
                         .passwordParameter("password")
                         .defaultSuccessUrl("/main.do", true)
