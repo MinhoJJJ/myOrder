@@ -64,35 +64,35 @@ function start() {
     // 따로 추가된 부분
 
     // 로그인 버튼 클릭시
-    $("#loginButton").click(function(){
-        // 입력된 사용자명과 비밀번호 가져오기
-        var userId = $("#login-userid").val();
-        var userPw = $("#login-password").val();
-
-        $.ajax({
-            type: 'POST',
-            url: '/login/login.do',
-            async : false,
-            dataType: 'json',
-            data : {userId : userId , userPw: userPw},
-            success: function (json) {
-                console.log(json);
-                if(json.result =="F"){
-                    alert(json.message);
-                }else{
-                    alert(json.message);
-                    window.location.href = "/login/main.do";
-                }
-            },error: function(XMLHttpRequest, textStatus, errorThrown){
-                alert("로그인실패");
-                console.log(XMLHttpRequest);
-                console.log("-----------------");
-                console.log(textStatus);
-                console.log("-----------------");
-                console.log(errorThrown);
-            }
-        });
-    });
+    // $("#loginButton").click(function(){
+    //     // 입력된 사용자명과 비밀번호 가져오기
+    //     var userId = $("#login-userid").val();
+    //     var userPw = $("#login-password").val();
+    //
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/login/login.do',
+    //         async : false,
+    //         dataType: 'json',
+    //         data : {userId : userId , userPw: userPw},
+    //         success: function (json) {
+    //             console.log(json);
+    //             if(json.result =="F"){
+    //                 alert(json.message);
+    //             }else{
+    //                 alert(json.message);
+    //                 window.location.href = "/login/main.do";
+    //             }
+    //         },error: function(XMLHttpRequest, textStatus, errorThrown){
+    //             alert("로그인실패");
+    //             console.log(XMLHttpRequest);
+    //             console.log("-----------------");
+    //             console.log(textStatus);
+    //             console.log("-----------------");
+    //             console.log(errorThrown);
+    //         }
+    //     });
+    // });
     // 회원가입 버튼 클릭시
     $("#signupButton").click(function(){
         // 입력된 사용자명과 비밀번호 가져오기
