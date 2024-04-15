@@ -4,6 +4,10 @@ import com.myOrder.dto.memberDto;
 import com.myOrder.entity.Member;
 import com.myOrder.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -29,7 +33,7 @@ public class loginServiceImpl implements loginService {
                 }else{
                     message="로그인 성공";
                     result="S";
-                    resultMap.put("userName",member.getUserName());
+                    resultMap.put("userName",member.getName());
                 }
             }else{
                 message="아이디를 잘못 입력하셨습니다.";
@@ -68,4 +72,31 @@ public class loginServiceImpl implements loginService {
 
         return resultMap;
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+     System.err.println("username: "+username);
+     Member member = new Member();
+     memberDto memberDto = new memberDto();
+
+     memberDto.setId(username);
+     member = memberRepository.findByUserId(memberDto);
+        System.err.println("getId: "+member.getId());
+        System.err.println("getName: "+member.getName());
+        System.err.println("getPassword: "+member.getPassword());
+
+        String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
+         if(member != null) { // 조회된 회원이 있다면
+             return User.builder()
+                .username(member.getId())
+                .password(member.getPassword())
+                .roles(member.getAuth()) //"USER"로 접두사를 필요로 하지않을때 사용가능
+                // .authorities(AuthorityUtils.createAuthorityList(Arrays.asList(auth)))
+                // "ROLE_" 접두사가 포함되어 있고 List 형태어이야 함
+                .build();
+         }else {
+             throw new UsernameNotFoundException("조회된 회원이 없습니다");
+         }
+    }
 }
+

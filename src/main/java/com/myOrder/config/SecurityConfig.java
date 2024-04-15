@@ -8,6 +8,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 
@@ -28,12 +29,17 @@ public class SecurityConfig {
                 .formLogin(login -> login
                         .loginPage("/")
                         .loginProcessingUrl("/login.do")   //안타짐
-                        .usernameParameter("userId")
-                        .passwordParameter("userPw")
+                        .usernameParameter("id")
+                        .passwordParameter("password")
                         .defaultSuccessUrl("/main.do", true)
                         .permitAll()
                 );
         return http.build();    //만들어진 보안구성객체를 반환
+    }
+
+    @Bean
+    public PasswordEncoder loginPasswordEncoder() {
+        return new NoPasswordEncoder();
     }
 
 }

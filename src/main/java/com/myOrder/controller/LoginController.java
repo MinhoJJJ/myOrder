@@ -31,12 +31,19 @@ public class LoginController {
 
     private final loginService loginService;
 
-    @RequestMapping("/login.do")
-    public String login(memberDto memberDto, HttpServletRequest request) throws Exception {
+
+    @PostMapping("/login3.do")
+    public String login3(memberDto memberDto) {
+        log.info("전달 받은 화면의 요청값 : {}", memberDto);
+        return "main";
+    }
+
+    @RequestMapping("/login3.do")
+    public String login3(memberDto memberDto, HttpServletRequest request) throws Exception {
 
         System.err.println("헬로우");
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
-        System.err.println(memberDto.getUserId());
+        System.err.println(memberDto.getId());
         // 아이디 비밀번호 체크
         resultMap = loginService.findByUserInfo(memberDto);
         System.err.println( resultMap.get("result"));
@@ -51,12 +58,12 @@ public class LoginController {
 //            throw new UsernameNotFoundException("조회된 회원이 없습니다");
 //        }
     }
-    @RequestMapping("/login2.do")
-    public UserDetails login2(memberDto memberDto, HttpServletRequest request) throws Exception {
+    @RequestMapping("/login.do")
+    public UserDetails login(memberDto memberDto, HttpServletRequest request) throws Exception {
 
         System.err.println("헬로우");
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
-        System.err.println(memberDto.getUserId());
+        System.err.println(memberDto.getId());
         // 아이디 비밀번호 체크
         resultMap = loginService.findByUserInfo(memberDto);
         System.err.println( resultMap.get("result"));
@@ -67,7 +74,7 @@ public class LoginController {
             String[] auth = {"USER", "ADMIN"};
             return User.builder()
                     .username((String) resultMap.get("userName"))
-                    .password(memberDto.getUserPw())
+                    .password(memberDto.getPassword())
                     .roles(auth)
                     .authorities(new SimpleGrantedAuthority("USER"), new SimpleGrantedAuthority("ADMIN"))
                     .build();

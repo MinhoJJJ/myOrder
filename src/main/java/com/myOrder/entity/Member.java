@@ -11,20 +11,30 @@ import jakarta.persistence.*;
 public class Member {
 
     @Id
-    @Column(name = "user_id")
-    private String userId;
+    @Getter
+    @Column(name = "ID")
+    private String id;
 
-    @Column(name = "user_pw")
-    private String userPw;
+    @Getter
+    @Column(name = "PASSWORD")
+    private String password;
 
-    @Column(name = "user_name")
-    private String userName;
+    @Getter
+    @Column(name = "NAME")
+    private String name;
 
-    public String getUserId() { return userId; }
-    public void setUserId(String userId) { this.userId = userId; }
-    public String getUserPw() { return userPw; }
-    public void setUserPw(String userPw) { this.userPw = userPw; }
-    public String getUserName() { return userName; }
-    public void setUserName(String userName) { this.userName = userName; }
+    @Getter
+    @Column(name = "AUTH")
+    private String auth;
+
+    @Getter
+    @Column(name = "JOINDATE")
+    private String joinDate;
+
+    public void setId(String id) {this.id = id;}
+    public void setPassword(String password) {this.password = password;}
+    public void setName(String name) {this.name = name;}
+    public void setAuth(String auth) {this.auth = auth;}
+    public void setJoinDate(String joinDate) {this.joinDate = joinDate;}
 
 }

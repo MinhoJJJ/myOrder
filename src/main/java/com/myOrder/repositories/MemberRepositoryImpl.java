@@ -23,24 +23,24 @@ public class MemberRepositoryImpl implements CustomMemberRepository{
     public Member findByUserId(memberDto memberDto) {
         return query
                 .selectFrom(qMember)
-                .where(qMember.userId.eq(memberDto.getUserId()))
+                .where(qMember.id.eq(memberDto.getId()))
                 .fetchOne();  //QueryDSL의 메서드 중 하나로, 쿼리를 실행하고 결과를 가져오는 역할을 합니다.
     }
     @Override
     public Member findByUserPw(memberDto memberDto) {
         return query
                 .selectFrom(qMember)
-                .where(qMember.userId.eq(memberDto.getUserId()).and(qMember.userPw.eq(memberDto.getUserPw())))
+                .where(qMember.id.eq(memberDto.getId()).and(qMember.password.eq(memberDto.getPassword())))
                 .fetchOne();  //QueryDSL의 메서드 중 하나로, 쿼리를 실행하고 결과를 가져오는 역할을 합니다.
     }
 
     @Override
     @Transactional
     public int insertMember(memberDto memberDto) {
-        entityManager.createNativeQuery("INSERT INTO user_info (user_id, user_pw, user_name) VALUES (?, ?, ?)")
-                .setParameter(1, memberDto.getUserId())
-                .setParameter(2, memberDto.getUserPw())
-                .setParameter(3, memberDto.getUserName())
+        entityManager.createNativeQuery("INSERT INTO user_info (ID,PASSWORD,NAME) VALUES (?, ?, ?)")
+                .setParameter(1, memberDto.getId())
+                .setParameter(2, memberDto.getPassword())
+                .setParameter(3, memberDto.getName())
                 .executeUpdate();
         return 1;
     }
