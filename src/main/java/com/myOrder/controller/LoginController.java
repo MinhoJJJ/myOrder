@@ -25,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/login")
 @RequiredArgsConstructor
 @Slf4j
 public class LoginController {
@@ -87,7 +86,7 @@ public class LoginController {
 
     @RequestMapping("/main.do")
     public ModelAndView start(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-            System.err.println("하이");
+            System.err.println("/main.do");
             ModelAndView modelAndView;
             modelAndView = new ModelAndView("login/main");
 

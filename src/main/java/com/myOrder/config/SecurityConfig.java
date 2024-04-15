@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {    // 보안필터 체인을 정의하는 빈(메서드)
-        System.err.println("여기들어옴");
+        System.err.println("Security");
         http
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
@@ -26,11 +26,11 @@ public class SecurityConfig {
                         .anyRequest().authenticated() // 모든 요청에 대해 인증 필요
                 )
                 .formLogin(login -> login
-                        //.loginPage("/")
-                        //.loginProcessingUrl("/login/login.do")   //안타짐
-                        //.usernameParameter("userId")
-                        //.passwordParameter("userPw")
-                        .defaultSuccessUrl("/login/main.do", true)
+                        .loginPage("/")
+                        .loginProcessingUrl("/login.do")   //안타짐
+                        .usernameParameter("userId")
+                        .passwordParameter("userPw")
+                        .defaultSuccessUrl("/main.do", true)
                         .permitAll()
                 );
         return http.build();    //만들어진 보안구성객체를 반환
