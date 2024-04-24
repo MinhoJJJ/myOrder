@@ -81,12 +81,15 @@ public class loginServiceImpl implements loginService {
 
      memberDto.setId(username);
      member = memberRepository.findByUserId(memberDto);
-        System.err.println("getId: "+member.getId());
-        System.err.println("getName: "+member.getName());
-        System.err.println("getPassword: "+member.getPassword());
+
 
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
          if(member != null) { // 조회된 회원이 있다면
+
+             System.err.println("getId: "+member.getId());
+             System.err.println("getName: "+member.getName());
+             System.err.println("getPassword: "+member.getPassword());
+
              return User.builder()
                 .username(member.getId())
                 .password(member.getPassword())
@@ -95,6 +98,7 @@ public class loginServiceImpl implements loginService {
                 // "ROLE_" 접두사가 포함되어 있고 List 형태어이야 함
                 .build();
          }else {
+             System.err.println("여기로 빠짐");
              throw new UsernameNotFoundException("조회된 회원이 없습니다");
          }
     }

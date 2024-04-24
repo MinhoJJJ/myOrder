@@ -28,7 +28,7 @@ public class SecurityConfig {
                 )
                 .formLogin(login -> login
                         .loginPage("/")
-                        .loginProcessingUrl("login.do")   //login 말고 login을 해야 정상적으로 작동
+                        .loginProcessingUrl("/login.do")   //  "/login" 말고 login을 해야 정상적으로 작동  여기서 / 의 역할은 상대경로인지 절대경로인지
                         .usernameParameter("id")
                         .passwordParameter("password")
                         .defaultSuccessUrl("/main.do", true)
