@@ -3,6 +3,7 @@ package com.myOrder.service;
 import com.myOrder.dto.memberDto;
 import com.myOrder.entity.Member;
 import com.myOrder.repositories.MemberRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 
 @Service
+@Slf4j
 public class loginServiceImpl implements loginService {
 
     @Autowired
@@ -74,21 +76,17 @@ public class loginServiceImpl implements loginService {
     }
 
     @Override
+    //시큐리티 기본 로그인 로직
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-     System.err.println("username: "+username);
-     Member member = new Member();
-     memberDto memberDto = new memberDto();
+        log.info("====================loginService.loadUserByUsername 디폴드 로그인 체크 ====================");
+        Member member = new Member();
+        memberDto memberDto = new memberDto();
 
-     memberDto.setId(username);
-     member = memberRepository.findByUserId(memberDto);
-
+        memberDto.setId(username);
+        member = memberRepository.findByUserId(memberDto);
 
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
          if(member != null) { // 조회된 회원이 있다면
-
-             System.err.println("getId: "+member.getId());
-             System.err.println("getName: "+member.getName());
-             System.err.println("getPassword: "+member.getPassword());
 
              return User.builder()
                 .username(member.getId())
@@ -98,7 +96,6 @@ public class loginServiceImpl implements loginService {
                 // "ROLE_" 접두사가 포함되어 있고 List 형태어이야 함
                 .build();
          }else {
-             System.err.println("여기로 빠짐");
              throw new UsernameNotFoundException("조회된 회원이 없습니다");
          }
     }
