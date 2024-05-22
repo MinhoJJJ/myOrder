@@ -1,0 +1,50 @@
+<!-- settings.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설정</title>
+    <script src="/js/main.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/setting.css}" />
+</head>
+<body>
+<div id="header"></div>
+
+<main>
+    <section class="settings">
+        <h2>설정</h2>
+        <form>
+            <div class="setting-item">
+                <label for="theme">테마 선택:</label>
+                <select id="theme" name="theme">
+                    <option value="light">라이트</option>
+                    <option value="dark">다크</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="language">언어 선택:</label>
+                <select id="language" name="language">
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="currency">통화 선택:</label>
+                <select id="currency" name="currency">
+                    <option value="krw">원 (KRW)</option>
+                    <option value="usd">달러 (USD)</option>
+                    <option value="eur">유로 (EUR)</option>
+                </select>
+            </div>
+            <button type="submit">저장</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 가계부. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

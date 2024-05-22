@@ -74,6 +74,18 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping("/setting.do")
+    public ModelAndView moveSetting(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
+        log.info("====================MainController.moveSetting 셋팅 화면 이동 ====================");
+        ModelAndView modelAndView;
+        modelAndView = new ModelAndView("main/setting");
+        HttpSession session = request.getSession(true);
+
+        modelAndView.addObject("error", error);
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
+
     // 레스트 컨트롤러 아닌 방식
 //    @GetMapping("/")
 //    public String main() {
