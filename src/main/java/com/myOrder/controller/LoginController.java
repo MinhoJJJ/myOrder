@@ -57,18 +57,6 @@ public class LoginController {
         return resultMap;
     }
 
-    @RequestMapping("/main.do")
-    public ModelAndView start(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================loginController.start 메인화면 이동 ====================");
-        ModelAndView modelAndView;
-        modelAndView = new ModelAndView("login/main");
-
-        HttpSession session = request.getSession(true);
-
-        modelAndView.addObject("error", error);
-        modelAndView.addObject("exception", exception);
-        return modelAndView;
-    }
 
     @RequestMapping("/error.do")
     public String loginError(Model model, HttpServletResponse response) {

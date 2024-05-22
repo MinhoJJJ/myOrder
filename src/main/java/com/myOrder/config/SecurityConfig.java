@@ -23,7 +23,6 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {    // 보안필터 체인을 정의하는 빈(메서드)
-        System.err.println("Security");
         http
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
@@ -37,7 +36,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login.do")   //  "/login" 말고 login을 해야 정상적으로 작동  여기서 / 의 역할은 상대경로인지 절대경로인지
                         .usernameParameter("id")
                         .passwordParameter("password")
-                        .failureHandler(LoginFailureHandler)
+                        .failureHandler(LoginFailureHandler)   //로그인 실패시 핸들러 타도록
                         .defaultSuccessUrl("/main.do", true)
                         .permitAll()
                 );

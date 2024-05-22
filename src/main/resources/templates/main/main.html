@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가계부</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" /></head>
+<body>
+<header>
+    <h1>가계부</h1>
+    <nav>
+        <ul>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">거래 추가</a></li>
+            <li><a href="#">보고서</a></li>
+            <li><a href="#">설정</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="summary">
+        <h2>이번 달 요약</h2>
+        <div class="summary-box">
+            <div class="summary-item">
+                <h3>총 수입</h3>
+                <p>₩1,000,000</p>
+            </div>
+            <div class="summary-item">
+                <h3>총 지출</h3>
+                <p>₩600,000</p>
+            </div>
+            <div class="summary-item">
+                <h3>잔액</h3>
+                <p>₩400,000</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <h2>카테고리별 지출</h2>
+        <div class="category-box">
+            <div class="category-item">
+                <h3>식비</h3>
+                <p>₩200,000</p>
+            </div>
+            <div class="category-item">
+                <h3>교통비</h3>
+                <p>₩100,000</p>
+            </div>
+            <div class="category-item">
+                <h3>엔터테인먼트</h3>
+                <p>₩50,000</p>
+            </div>
+            <!-- 더 많은 카테고리를 추가할 수 있습니다 -->
+        </div>
+    </section>
+
+    <section class="recent-transactions">
+        <h2>최신 거래 내역</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>날짜</th>
+                <th>설명</th>
+                <th>카테고리</th>
+                <th>금액</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2024-05-20</td>
+                <td>점심 식사</td>
+                <td>식비</td>
+                <td>₩10,000</td>
+            </tr>
+            <tr>
+                <td>2024-05-19</td>
+                <td>지하철 요금</td>
+                <td>교통비</td>
+                <td>₩2,500</td>
+            </tr>
+            <tr>
+                <td>2024-05-18</td>
+                <td>영화 관람</td>
+                <td>엔터테인먼트</td>
+                <td>₩12,000</td>
+            </tr>
+            <!-- 더 많은 거래 내역을 추가할 수 있습니다 -->
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 가계부. All rights reserved.</p>
+</footer>
+</body>
+</html>
