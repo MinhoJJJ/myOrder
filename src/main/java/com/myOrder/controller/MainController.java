@@ -50,7 +50,29 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
+    @RequestMapping("/header.do")
+    public ModelAndView moveHeader(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
+        log.info("====================MainController.moveHeader 헤더화면 추가 ====================");
+        ModelAndView modelAndView;
+        modelAndView = new ModelAndView("main/header");
+        HttpSession session = request.getSession(true);
 
+        modelAndView.addObject("error", error);
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
+
+    @RequestMapping("/report.do")
+    public ModelAndView moveReport(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
+        log.info("====================MainController.moveReport 리포트 화면 이동 ====================");
+        ModelAndView modelAndView;
+        modelAndView = new ModelAndView("main/report");
+        HttpSession session = request.getSession(true);
+
+        modelAndView.addObject("error", error);
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
 
     // 레스트 컨트롤러 아닌 방식
 //    @GetMapping("/")
