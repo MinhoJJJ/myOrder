@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>거래 추가</title>
+    <link rel="stylesheet" href="static/css/transaction.css">
+</head>
+<body>
+<header>
+    <h1>가계부</h1>
+    <nav>
+        <ul>
+            <li><a href="main.do">홈</a></li>
+            <li><a href="transaction.do">거래 추가</a></li>
+            <li><a href="#">보고서</a></li>
+            <li><a href="#">설정</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="transaction-form">
+        <h2>거래 추가</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="date">날짜:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="description">설명:</label>
+                <input type="text" id="description" name="description" placeholder="거래 설명" required>
+            </div>
+            <div class="form-group">
+                <label for="category">카테고리:</label>
+                <select id="category" name="category" required>
+                    <option value="food">식비</option>
+                    <option value="transport">교통비</option>
+                    <option value="entertainment">엔터테인먼트</option>
+                    <option value="other">기타</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">금액:</label>
+                <input type="number" id="amount" name="amount" placeholder="₩" required>
+            </div>
+            <button type="submit">추가</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 가계부. All rights reserved.</p>
+</footer>
+</body>
+</html>
