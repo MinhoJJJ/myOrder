@@ -28,3 +28,13 @@ nav ul li a {
 nav ul li a:hover {
     text-decoration: underline;
 }
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0rem 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
