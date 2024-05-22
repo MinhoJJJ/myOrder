@@ -1,20 +1,26 @@
 package com.myOrder.config;
 
 import jakarta.servlet.DispatcherType;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 
 @Configuration        // 해당 클래스를 빈으로 지정하도록 하는 어노테이션
 @EnableWebSecurity    // 해당 클래스가 스프링 시큐리티 설정을 정의한다는 것을 나타냄
+@RequiredArgsConstructor
+
 public class SecurityConfig {
+
+    private final AuthenticationFailureHandler LoginFailureHandler;
+
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {    // 보안필터 체인을 정의하는 빈(메서드)
         System.err.println("Security");
@@ -31,6 +37,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login.do")   //  "/login" 말고 login을 해야 정상적으로 작동  여기서 / 의 역할은 상대경로인지 절대경로인지
                         .usernameParameter("id")
                         .passwordParameter("password")
+                        .failureHandler(LoginFailureHandler)
                         .defaultSuccessUrl("/main.do", true)
                         .permitAll()
                 );

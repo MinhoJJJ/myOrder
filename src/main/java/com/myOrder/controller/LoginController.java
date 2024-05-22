@@ -3,6 +3,7 @@ package com.myOrder.controller;
 import com.myOrder.dto.memberDto;
 import com.myOrder.service.loginService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,5 +68,11 @@ public class LoginController {
         modelAndView.addObject("error", error);
         modelAndView.addObject("exception", exception);
         return modelAndView;
+    }
+
+    @RequestMapping("/error.do")
+    public String loginError(Model model, HttpServletResponse response) {
+        log.info("====================loginController.start 메인화면 이동 ====================");
+        return "/dfdddd";
     }
 }
