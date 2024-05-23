@@ -6,4 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("header").innerHTML = data;
         });
 
+    function showUserGreeting(username) {
+        document.getElementById('userGreeting').innerHTML = `${username} 님, 안녕하세요`;
+    }
+
 });

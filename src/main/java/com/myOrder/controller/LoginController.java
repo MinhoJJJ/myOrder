@@ -49,12 +49,23 @@ public class LoginController {
         }
     }
 
-    @RequestMapping("/signUp.do")
+    @RequestMapping("/signUp22.do")
     public HashMap<String, Object> signUp(memberDto memberDto,HttpServletRequest request) throws Exception {
 
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
         resultMap=loginService.signUpMember(memberDto);
         return resultMap;
+    }
+    @RequestMapping("/signUp.do")
+    public ModelAndView moveSignUp(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
+        log.info("====================loginController.moveSignUp 회원가입 이동 ====================");
+        ModelAndView modelAndView;
+        modelAndView = new ModelAndView("login/signUp");
+        HttpSession session = request.getSession(true);
+
+        modelAndView.addObject("error", error);
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
     }
 
 
