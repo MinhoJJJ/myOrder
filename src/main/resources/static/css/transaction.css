@@ -56,3 +56,29 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+/* 지출/ 수입 버튼 */
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.toggle-buttons button {
+    background-color: #f4f4f9;
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-buttons button.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.toggle-buttons button:focus {
+    outline: none;
+}

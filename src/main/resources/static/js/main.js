@@ -5,4 +5,5 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             document.getElementById("header").innerHTML = data;
         });
+
 });

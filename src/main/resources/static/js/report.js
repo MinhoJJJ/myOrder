@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    console.log("하이")
         // 엑셀 다운로드 버튼 클릭 이벤트 처리
         document.querySelector('.excel-download-btn').addEventListener('click', function () {
             const reportMonth = document.getElementById('reportMonth').innerText;
