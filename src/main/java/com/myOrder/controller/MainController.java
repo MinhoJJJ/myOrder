@@ -85,6 +85,17 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
+    @RequestMapping("/modify.do")
+    public ModelAndView moveModify(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
+        log.info("====================MainController.moveModify 정보수정 화면 이동 ====================");
+        ModelAndView modelAndView;
+        modelAndView = new ModelAndView("main/modify");
+        HttpSession session = request.getSession(true);
+
+        modelAndView.addObject("error", error);
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
 
     // 레스트 컨트롤러 아닌 방식
 //    @GetMapping("/")
