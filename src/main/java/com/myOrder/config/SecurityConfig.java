@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request                 // HTTP 요청에 대한 인증 및 인가 규칙을 설정
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll() // FORWARD 디스패처에 대해 허용
-                        .requestMatchers("/img/**","/css/**").permitAll() // 추가적인 요청을 인증제외을 허용
+                        .requestMatchers("/img/**","/css/**","/js/**","/signUp.do").permitAll() // 추가적인 요청을 인증제외을 허용
                         .anyRequest().authenticated() // 모든 요청에 대해 인증 필요
                 )
                 .formLogin(login -> login
