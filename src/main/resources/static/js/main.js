@@ -1,4 +1,5 @@
-$(document).ready(function() {
-    $('html').removeClass('no-js');
+$(document).ready(function() {    // 페이지 로드 이벤트
+
+
 
 });

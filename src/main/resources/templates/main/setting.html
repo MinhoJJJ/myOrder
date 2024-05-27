@@ -5,12 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>설정</title>
-    <script src="/js/header.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/setting.css}" />
 </head>
 <body>
-<div id="header"></div>
-
+<header>
+    <h1>가계부</h1>
+    <nav>
+        <ul>
+            <li><a href="main.do">홈</a></li>
+            <li><a href="transaction.do">거래 추가</a></li>
+            <li><a href="report.do">보고서</a></li>
+            <li><a href="setting.do">설정</a></li>
+        </ul>
+    </nav>
+    <div id="user-info">
+        <span id="username">사용자이름</span>님
+        <button id="modify-button" onclick="location.href='modify.do';">정보 수정</button>
+        <button id="logout-button">로그아웃</button>
+    </div>
+</header>
 <main>
     <section class="settings">
         <h2>설정</h2>
