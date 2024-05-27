@@ -1,10 +1,4 @@
 /* static/css/settings.css */
-h2 {
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-
 .settings {
     background-color: white;
     padding: 2rem;
@@ -16,13 +10,13 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
-label {
+.settings label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
 
-select {
+.settings select {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ddd;
@@ -30,7 +24,7 @@ select {
     box-sizing: border-box;
 }
 
-button {
+.settings button {
     background-color: #4CAF50;
     color: white;
     padding: 0.75rem 1.5rem;
@@ -40,9 +34,10 @@ button {
     font-size: 1rem;
 }
 
-button:hover {
+.settings button:hover {
     background-color: #45a049;
 }
+
 /* static/css/header.css */
 header {
     background-color: #4CAF50;
@@ -115,6 +110,7 @@ footer {
 #username {
     font-weight: bold;
 }
+
 #logout-button {
     background-color: rgba(14, 128, 16, 0.5); /* 반투명한 녹색 */
     margin-left: 0.5rem;
