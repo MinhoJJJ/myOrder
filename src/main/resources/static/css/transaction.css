@@ -61,7 +61,7 @@
 .toggle-buttons {
     display: flex;
     justify-content: center;
-    margin-bottom: 0rem;
+    transform: translateY(-0.5rem); /* 이 값을 조정하여 버튼을 위로 이동 */
     margin-left: -13cm; /* 왼쪽으로 1cm 이동 */
 
 }
