@@ -20,6 +20,7 @@
             <li><a href="main.do">홈</a></li>
             <li><a href="transaction.do">거래 추가</a></li>
             <li><a href="report.do">보고서</a></li>
+            <li><a href="report.do">전체내역</a></li>
             <li><a href="setting.do">설정</a></li>
         </ul>
     </nav>
@@ -33,8 +34,12 @@
     <section class="report">
         <div class="report-container">
             <div class="report-item" id="reportItem">
-                <h2 id="reportMonth">5월 보고서</h2>
-                <p id="totalExpense">총 수익: ₩600,000  /  총 지출: ₩600,000</p>
+                <div class="report-header">
+                    <button id="prevMonth" class="month-nav">⇦</button>
+                    <h2 id="reportMonth">5월 보고서</h2>
+                    <button id="nextMonth" class="month-nav">⇨</button>
+                </div>
+                <p id="totalExpense">5월 수익: ₩600,000  / 5월 지출: ₩600,000</p>
                 <canvas id="myChart"></canvas>
                 <ul class="expense-list">
                     <li><span class="expense-type">식비</span><span class="dots"></span><span class="expense-amount" id="foodExpense">200,000 원</span></li>
