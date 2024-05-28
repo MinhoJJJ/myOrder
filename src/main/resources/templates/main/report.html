@@ -31,24 +31,20 @@
 </header>
 <main>
     <section class="report">
-        <h2>월별 지출 보고서</h2>
         <div class="report-container">
             <div class="report-item" id="reportItem">
-                <h3 id="reportMonth">2024년 5월</h3>
-                <p id="totalExpense">총 지출: ₩600,000</p>
+                <h2 id="reportMonth">5월 보고서</h2>
+                <p id="totalExpense">총 수익: ₩600,000  /  총 지출: ₩600,000</p>
                 <canvas id="myChart"></canvas>
-                <ul>
-                    <li>식비: <span id="foodExpense">200,000 원</span></li>
-                    <li>교통비: <span id="transportExpense">100,000 원</span></li>
-                    <li>엔터테인먼트: <span id="entertainmentExpense">50,000 원</span></li>
+                <ul class="expense-list">
+                    <li><span class="expense-type">식비</span><span class="dots"></span><span class="expense-amount" id="foodExpense">200,000 원</span></li>
+                    <li><span class="expense-type">교통비</span><span class="dots"></span><span class="expense-amount" id="transportExpense">100,000 원</span></li>
+                    <li><span class="expense-type">엔터테인먼트</span><span class="dots"></span><span class="expense-amount" id="entertainmentExpense1">50,000 원</span></li>
+                    <li><span class="expense-type">엔터테인먼트</span><span class="dots"></span><span class="expense-amount" id="entertainmentExpense2">50,000 원</span></li>
+                    <li><span class="expense-type">엔터테인먼트</span><span class="dots"></span><span class="expense-amount" id="entertainmentExpense3">50,000 원</span></li>
                 </ul>
                 <button class="excel-download-btn">엑셀 다운로드</button>
             </div>
-            <div class="navigation-arrows">
-                <button id="prevMonth">◀</button>
-                <button id="nextMonth">▶</button>
-            </div>
-            <!-- 다른 월별 보고서 항목 추가 -->
         </div>
     </section>
 </main>

@@ -1,6 +1,6 @@
 /* static/css/report.css */
 .report {
-    padding: 1.5rem; /* 패딩 축소 */
+    padding: 1rem; /* 패딩 축소 */
     max-width: 800px; /* 최대 너비 조정 */
     margin: 0 auto; /* 좌우 여백을 auto로 설정하여 가운데 정렬 */
 }
@@ -23,7 +23,6 @@
 
 }
 
-
 .excel-download-btn {
     background-color: #4CAF50;
     color: white;
@@ -32,31 +31,36 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    margin-top: 0.5rem; /* 마진 축소 */
+    margin-top: 0.3rem; /* 마진 축소 */
+}
+.expense-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
 }
 
-.navigation-arrows {
+.expense-list li {
     display: flex;
     justify-content: space-between;
-    width: calc(100% - 3rem); /* 좌우 패딩의 너비만큼 제외 */
-    position: relative; /* 상대적인 위치 지정 */
-    top: -37rem; /* 폼 상단으로 이동 */
-    padding: 0 1.5rem; /* 좌우 패딩 추가 */
+    align-items: center;
+    padding: 3px 0;
+    font-size: 15px;
 }
 
-.navigation-arrows button {
-    font-size: 24px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+.expense-type {
+    display: inline-block;
+    margin-right: 10px;
 }
 
-.navigation-arrows button:focus {
-    outline: none;
+.dots {
+    flex: 1;
+    border-bottom: 1px dotted #ccc;
+    margin: 0 10px;
 }
 
-.navigation-arrows button:hover {
-    color: #4CAF50; /* 호버 시 녹색으로 변경 */
+.expense-amount {
+    display: inline-block;
+    text-align: right;
 }
 
 /* 모바일 대응 스타일 */
@@ -66,9 +70,6 @@
         max-width: calc(100% - 20px); /* 화면 너비에서 여백 제외 */
     }
 
-    .navigation-arrows {
-        top: -28rem; /* 모바일 환경에서 폼 상단으로 이동 */
-    }
 }
 /* static/css/header.css */
 header {
