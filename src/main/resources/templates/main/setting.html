@@ -34,7 +34,7 @@
                     <option value="ko">한국어</option>
                     <option value="en">English</option>
                 </select>
-                <button type="button" id="saveLanguageButton">저장</button>
+                <button type="button" id="saveLanguageButton" class="add-button">저장</button>
             </div>
             <div class="setting-item">
                 <label for="currency">통화 선택:</label>
@@ -43,29 +43,38 @@
                     <option value="usd">달러 (USD)</option>
                     <option value="eur">유로 (EUR)</option>
                 </select>
-                <button type="button" id="saveCurrencyButton">저장</button>
+                <button type="button" id="saveCurrencyButton" class="add-button">저장</button>
             </div>
         </form>
 
-        <!-- 수입/지출 카테고리 추가 및 제거 섹션 -->
+        <!-- 수입/지출 카테고리 추가 -->
         <div class="category-section">
-            <h3>카테고리 관리</h3>
+            <h2>카테고리 설정</h2>
             <div class="setting-item">
                 <label for="newIncomeCategory">수입 카테고리 추가:</label>
                 <input type="text" id="newIncomeCategory" name="newIncomeCategory" placeholder="카테고리 이름">
-                <button type="button" id="addIncomeCategoryButton">추가</button>
+                <button type="button" id="addIncomeCategoryButton" class="add-button">추가</button>
             </div>
-            <ul id="incomeCategoryList">
-                <!-- 수입 카테고리 목록이 여기에 표시됩니다. -->
-            </ul>
             <div class="setting-item">
                 <label for="newExpenseCategory">지출 카테고리 추가:</label>
                 <input type="text" id="newExpenseCategory" name="newExpenseCategory" placeholder="카테고리 이름">
-                <button type="button" id="addExpenseCategoryButton">추가</button>
+                <button type="button" id="addExpenseCategoryButton" class="add-button">추가</button>
             </div>
-            <ul id="expenseCategoryList">
-                <!-- 지출 카테고리 목록이 여기에 표시됩니다. -->
-            </ul>
+        </div>
+        <!-- 수입/지출 카테고리 제거-->
+        <div class="category-section">
+            <h2>카테고리 제거</h2>
+            <div class="setting-item">
+                <label for="newIncomeCategory">수입 카테고리 제거:</label>
+                <input type="text" id="delIncomeCategory" name="newIncomeCategory" placeholder="카테고리 이름">
+                <button type="button" id="delIncomeCategoryButton" class="delete-button">제거</button>
+            </div>
+
+            <div class="setting-item">
+                <label for="newExpenseCategory">지출 카테고리 제거:</label>
+                <input type="text" id="delExpenseCategory" name="newExpenseCategory" placeholder="카테고리 이름">
+                <button type="button" id="delExpenseCategoryButton" class="delete-button">제거</button>
+            </div>
         </div>
     </section>
 </main>
