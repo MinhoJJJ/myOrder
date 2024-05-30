@@ -1,19 +1,22 @@
 $(document).ready(function () {
     $('#checkDuplicateId').click(function () {
-        const userId = $('#signupId').val().trim();
+        var userId = $('#signupId').val();
+        console.log("userId: "+userId)
         if (userId === '') {
             alert('아이디를 입력하세요.');
             return;
         }
 
-        // AJAX 요청으로 아이디 중복 확인 (예시)
+        // AJAX 요청으로 아이디 중복 확인
         $.ajax({
-            url: '/check-duplicate-id', // 실제 아이디 중복 확인 URL로 변경
+            url: '/checkDuplicateIdAjax.do', // 실제 아이디 중복 확인 URL로 변경
             method: 'POST',
-            data: { userId: userId },
+            data: { Id: userId },
             success: function (response) {
-                if (response.isDuplicate) {
+                 console.log(response.result);
+                if (response.result =="S") {
                     alert('이미 사용 중인 아이디입니다.');
+                    $('#signupId').val("");
                 } else {
                     alert('사용 가능한 아이디입니다.');
                 }
@@ -25,7 +28,7 @@ $(document).ready(function () {
     });
 
     $('#signupForm').submit(function (e) {
-        const email = $('#signupEmail').val().trim();
+        var email = $('#signupEmail').val();
         if (!validateEmail(email)) {
             alert('유효한 이메일 주소를 입력하세요.');
             e.preventDefault();

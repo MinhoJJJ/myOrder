@@ -1,4 +1,4 @@
-package com.myOrder.controller;
+package com.myOrder.controller.Login;
 
 import com.myOrder.dto.memberDto;
 import com.myOrder.service.loginService;

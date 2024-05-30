@@ -22,26 +22,24 @@ public class loginServiceImpl implements loginService {
     public HashMap<String, Object> findByUserInfo(memberDto memberDto) {
         Member member = new Member();
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
-
         String message = null;
         String result = null;
 
             member = memberRepository.findByUserId(memberDto);
             if (member != null) {
-                member = memberRepository.findByUserPw(memberDto);
-                if (member == null) {
-                    message="패스워드를 잘못 입력하셨습니다.";
-                    result="F";
-                }else{
-                    message="로그인 성공";
-                    result="S";
-                    resultMap.put("userName",member.getName());
-                }
+//                member = memberRepository.findByUserPw(memberDto);
+//                if (member == null) {
+//                    message="패스워드를 잘못 입력하셨습니다.";
+//                    result="F";
+//                }else{
+//                message="로그인 성공";
+                System.err.println("성공");
+                result="S";
             }else{
-                message="아이디를 잘못 입력하셨습니다.";
+//                message="아이디를 잘못 입력하셨습니다.";
+                System.err.println("실패");
                 result="F";
             }
-            resultMap.put("message",message);
             resultMap.put("result",result);
 
 
