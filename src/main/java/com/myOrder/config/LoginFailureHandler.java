@@ -19,7 +19,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
         try {
             response.setContentType("text/html; charset=utf-8");
             PrintWriter w = response.getWriter();
-            w.write("<script>alert('로그인실패입니다');history.go(-1);</script>");
+            w.write("<script>alert('로그인실패입니다. 비밀번호 또는 아이디를 확인해주세요.');history.go(-1);</script>");
             w.flush();
             w.close();
         } catch(Exception e) {

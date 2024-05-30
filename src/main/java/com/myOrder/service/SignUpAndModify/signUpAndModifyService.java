@@ -1,16 +1,14 @@
-package com.myOrder.service;
+package com.myOrder.service.SignUpAndModify;
 
 import com.myOrder.dto.memberDto;
-import com.myOrder.entity.Member;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
 @Service
-public interface loginService extends UserDetailsService {
-     HashMap<String, Object> findByUserInfo(memberDto memberDto) throws Exception;
-
+public interface signUpAndModifyService{
+     HashMap<String, Object> checkDuplicateId(memberDto memberDto) throws Exception;
      HashMap<String, Object> signUpMember(memberDto memberDto) throws Exception;
 
 }

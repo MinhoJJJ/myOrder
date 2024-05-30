@@ -1,7 +1,7 @@
 package com.myOrder.controller.Login;
 
 import com.myOrder.dto.memberDto;
-import com.myOrder.service.loginService;
+import com.myOrder.service.Login.loginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -48,15 +48,7 @@ public class LoginController {
             throw new UsernameNotFoundException("조회된 회원이 없습니다");
         }
     }
-
-    @RequestMapping("/signUp22.do")
-    public HashMap<String, Object> signUp(memberDto memberDto,HttpServletRequest request) throws Exception {
-
-        HashMap<String, Object> resultMap = new HashMap<String, Object>();
-        resultMap=loginService.signUpMember(memberDto);
-        return resultMap;
-    }
-    @RequestMapping("/signUp.do")
+    @RequestMapping("/moveSignUp.do")
     public ModelAndView moveSignUp(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
         log.info("====================loginController.moveSignUp 회원가입 이동 ====================");
         ModelAndView modelAndView;
@@ -66,12 +58,5 @@ public class LoginController {
         modelAndView.addObject("error", error);
         modelAndView.addObject("exception", exception);
         return modelAndView;
-    }
-
-
-    @RequestMapping("/error.do")
-    public String loginError(Model model, HttpServletResponse response) {
-        log.info("====================loginController.start 메인화면 이동 ====================");
-        return "/dfdddd";
     }
 }

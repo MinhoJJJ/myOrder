@@ -6,6 +6,13 @@ $(document).ready(function () {
             alert('아이디를 입력하세요.');
             return;
         }
+        var isValid = /^[a-z0-9]*$/.test(userId);
+        if (!isValid) {
+            // 유효하지 않은 문자가 포함된 경우 처리 (예: 경고 메시지 표시)
+            alert('영어 소문자와 숫자만 입력할 수 있습니다.');
+            $('#signupId').val("");
+            return;
+        }
 
         // AJAX 요청으로 아이디 중복 확인
         $.ajax({
@@ -13,7 +20,7 @@ $(document).ready(function () {
             method: 'POST',
             data: { Id: userId },
             success: function (response) {
-                 console.log(response.result);
+                 console.log("result: "+response.result);
                 if (response.result =="S") {
                     alert('이미 사용 중인 아이디입니다.');
                     $('#signupId').val("");
