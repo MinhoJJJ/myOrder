@@ -6,12 +6,14 @@ import com.myOrder.repositories.MemberRepository;
 import com.myOrder.service.Login.loginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 @Service
 @Slf4j
@@ -50,11 +52,18 @@ public class loginServiceImpl implements loginService {
     //시큐리티 기본 로그인 로직
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("====================loginService.loadUserByUsername 디폴드 로그인 체크 ====================");
+
+        // 사용자의 언어 설정을 가져오는 로직을 추가합니다.
+
         Member member = new Member();
         memberDto memberDto = new memberDto();
 
         memberDto.setId(username);
         member = memberRepository.findByUserId(memberDto);
+//        System.out.println("lang= "+member.getLang());
+//        Locale userLocale = getUserLocale(member.getLang()); // 사용자의 언어 설정을 가져옴
+//        System.out.println("Locale= "+userLocale);
+//        LocaleContextHolder.setLocale(userLocale); // 스프링 시큐리티에서 사용할 Locale을 설정함
 
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
          if(member != null) { // 조회된 회원이 있다면
@@ -69,6 +78,16 @@ public class loginServiceImpl implements loginService {
          }else {
              throw new UsernameNotFoundException("조회된 회원이 없습니다");
          }
+    }
+
+    private Locale getUserLocale(String lang) {
+        if (lang.equals("EN")) {
+            return Locale.ENGLISH;
+        }else if(lang.equals("JP")){
+            return Locale.JAPANESE;
+        }else{
+            return Locale.KOREAN;
+        }
     }
 }
 
