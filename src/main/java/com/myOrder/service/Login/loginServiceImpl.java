@@ -60,11 +60,17 @@ public class loginServiceImpl implements loginService {
 
         memberDto.setId(username);
         member = memberRepository.findByUserId(memberDto);
-//        System.out.println("lang= "+member.getLang());
-//        Locale userLocale = getUserLocale(member.getLang()); // 사용자의 언어 설정을 가져옴
-//        System.out.println("Locale= "+userLocale);
-//        LocaleContextHolder.setLocale(userLocale); // 스프링 시큐리티에서 사용할 Locale을 설정함
-
+        System.out.println("member.getLang(): "+member.getLang());
+        if (member.getLang().equals("EN")) {
+            System.out.println("member: ENGLISH");
+            Locale.setDefault(Locale.ENGLISH);
+        }else if(member.getLang().equals("JP")){
+            System.out.println("member: JP");
+            Locale.setDefault(Locale.JAPANESE);
+        }else{
+            System.out.println("member: KOREAN");
+            Locale.setDefault(Locale.KOREAN);
+        }
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
          if(member != null) { // 조회된 회원이 있다면
 
