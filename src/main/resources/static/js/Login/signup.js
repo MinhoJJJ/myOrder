@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $('#checkDuplicateId').click(function () {
         var userId = $('#signupId').val();
-        console.log("userId: "+userId)
         if (userId === '') {
             alert('아이디를 입력하세요.');
             return;
@@ -20,7 +19,6 @@ $(document).ready(function () {
             method: 'POST',
             data: { Id: userId },
             success: function (response) {
-                 console.log("result: "+response.result);
                 if (response.result =="S") {
                     alert('이미 사용 중인 아이디입니다.');
                     $('#signupId').val("");
@@ -35,11 +33,19 @@ $(document).ready(function () {
     });
 
     $('#signupForm').submit(function (e) {
-        var email = $('#signupEmail').val();
-        if (!validateEmail(email)) {
-            alert('유효한 이메일 주소를 입력하세요.');
-            e.preventDefault();
-        }
+        var writeForm = $('#signupForm');
+        var other_data = writeForm.serializeArray();
+        var form = new FormData();
+
+        $.each(other_data,function(key,input){
+            console.log(input.name+"= "+input.value);
+            form.append(input.name, input.value);
+        });
+        // var email = $('#signupEmail').val();
+        // if (!validateEmail(email)) {
+        //     alert('유효한 이메일 주소를 입력하세요.');
+        //     e.preventDefault();
+        // }
     });
 
     function validateEmail(email) {
