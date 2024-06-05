@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 
 @Configuration        // 해당 클래스를 빈으로 지정하도록 하는 어노테이션
@@ -39,7 +40,14 @@ public class SecurityConfig {
                         .failureHandler(LoginFailureHandler)   //로그인 실패시 핸들러 타도록
                         .defaultSuccessUrl("/main.do", true)
                         .permitAll()
-                );
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout.do") // 로그아웃 URL 지정
+                        .logoutSuccessUrl("/") // 로그아웃 성공 시 리다이렉트할 URL 지정
+                        .invalidateHttpSession(true) // HTTP 세션 무효화
+                        .deleteCookies("JSESSIONID") // 쿠키 삭제
+                )
+        ;
         return http.build();    //만들어진 보안구성객체를 반환
     }
 
@@ -47,5 +55,6 @@ public class SecurityConfig {
     public PasswordEncoder loginPasswordEncoder() {
         return new NoPasswordEncoder();
     }
+
 
 }
