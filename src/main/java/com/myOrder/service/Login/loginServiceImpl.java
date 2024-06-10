@@ -3,17 +3,18 @@ package com.myOrder.service.Login;
 import com.myOrder.dto.memberDto;
 import com.myOrder.entity.Member;
 import com.myOrder.repositories.MemberRepository;
-import com.myOrder.service.Login.loginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import org.springframework.web.servlet.LocaleResolver;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Locale;
+
 
 @Service
 @Slf4j
@@ -21,6 +22,13 @@ public class loginServiceImpl implements loginService {
 
     @Autowired
     MemberRepository memberRepository;
+
+    @Autowired
+    private LocaleResolver localeResolver;
+
+    @Autowired
+    private HttpServletRequest request;
+
     public HashMap<String, Object> findByUserInfo(memberDto memberDto) {
         Member member = new Member();
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -61,16 +69,24 @@ public class loginServiceImpl implements loginService {
         memberDto.setId(username);
         member = memberRepository.findByUserId(memberDto);
         System.out.println("member.getLang(): "+member.getLang());
+
+        Locale locale;
         if (member.getLang().equals("EN")) {
             System.out.println("member: ENGLISH");
-            Locale.setDefault(Locale.ENGLISH);
+            //Locale.setDefault(Locale.ENGLISH);
+            locale = Locale.ENGLISH;
         }else if(member.getLang().equals("JP")){
             System.out.println("member: JP");
-            Locale.setDefault(Locale.JAPANESE);
+            //Locale.setDefault(Locale.JAPANESE);
+            locale = Locale.JAPANESE;
         }else{
             System.out.println("member: KOREAN");
-            Locale.setDefault(Locale.KOREAN);
+           // Locale.setDefault(Locale.KOREAN);
+            locale = Locale.KOREAN;
         }
+        localeResolver.setLocale(request, null, locale);
+
+
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
          if(member != null) { // 조회된 회원이 있다면
 
