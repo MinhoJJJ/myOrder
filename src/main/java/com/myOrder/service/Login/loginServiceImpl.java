@@ -72,19 +72,13 @@ public class loginServiceImpl implements loginService {
 
         Locale locale;
         if (member.getLang().equals("EN")) {
-            System.out.println("member: ENGLISH");
-            //Locale.setDefault(Locale.ENGLISH);
             locale = Locale.ENGLISH;
         }else if(member.getLang().equals("JP")){
-            System.out.println("member: JP");
-            //Locale.setDefault(Locale.JAPANESE);
             locale = Locale.JAPANESE;
         }else{
-            System.out.println("member: KOREAN");
-           // Locale.setDefault(Locale.KOREAN);
             locale = Locale.KOREAN;
         }
-        localeResolver.setLocale(request, null, locale);
+        localeResolver.setLocale(request, null, locale); // 로그인시 세션로케일에 언어설정을 전달
 
 
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
