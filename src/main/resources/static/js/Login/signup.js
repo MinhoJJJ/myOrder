@@ -32,20 +32,50 @@ $(document).ready(function () {
         });
     });
 
-    $('#signupForm').submit(function (e) {
-        var writeForm = $('#signupForm');
-        var other_data = writeForm.serializeArray();
-        var form = new FormData();
+    $('#signUpBtn').click(function () {
 
-        $.each(other_data,function(key,input){
-            console.log(input.name+"= "+input.value);
-            form.append(input.name, input.value);
+        var userId = $('#signupId').val();
+        var password = $('#Password').val();
+        var birthday = $('#Birthday').val();
+        var email = $('#Email').val();
+        var name = $('#Name').val();
+        console.log("userId: "+userId);
+        console.log("password: "+password);
+        console.log("birthday: "+birthday);
+        console.log("email: "+email);
+        console.log("name: "+name);
+
+
+
+        // var writeForm = $('#signupForm');
+        // var other_data = writeForm.serializeArray();
+        // var formData  = new FormData();
+
+        // $.each(other_data,function(key,input){
+        //     console.log(input.name+"= "+input.value);
+        //     form.append(input.name, input.value);
+        // });
+
+
+        // AJAX 요청으로 아이디 중복 확인
+        $.ajax({
+            url: '/signUp.do', // 실제 아이디 중복 확인 URL로 변경
+            method: 'POST',
+            data: { Id: userId, Password:password,
+                Birthday:birthday,Name:name, Email:email
+            },
+            success: function (response) {
+                if (response.result =="S") {
+                    alert('회원가입에 성공하셨습니다.');
+                    $('#signupId').val("");
+                } else {
+                    alert('회원가입에 실패하셨습니다.');
+                }
+            },
+            error: function () {
+                alert('중복 확인 중 오류가 발생했습니다.');
+            }
         });
-        // var email = $('#signupEmail').val();
-        // if (!validateEmail(email)) {
-        //     alert('유효한 이메일 주소를 입력하세요.');
-        //     e.preventDefault();
-        // }
     });
 
     function validateEmail(email) {

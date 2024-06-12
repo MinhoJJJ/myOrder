@@ -37,21 +37,16 @@ public class signUpAndModifyServiceImpl implements signUpAndModifyService {
 
         String message = null;
         String result = null;
-
-        member = memberRepository.findByUserId(memberDto);
-        if (member != null) {
-            message="이미 존재하는 아이디 입니다.";
-            result="F";
+        memberDto.setLang("KR");  // 언어기본값 한국어로 설정
+        int chk=memberRepository.insertMember(memberDto);
+        if(chk > 0){
+            message="회원가입에 성공하였습니다..";
+            result="S";
         }else{
-            int chk=memberRepository.insertMember(memberDto);
-            if(chk > 0){
-                message="회원가입에 성공하였습니다..";
-                result="S";
-            }else{
-                message="회원가입에 실패하였습니다.";
-                result="F";
-            }
+            message="회원가입에 실패하였습니다.";
+            result="F";
         }
+
         resultMap.put("message",message);
         resultMap.put("result",result);
 

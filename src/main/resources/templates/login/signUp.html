@@ -19,7 +19,7 @@
                     <h3 class="signup-title">회원가입</h3>
                 </div>
                 <div class="panel-body">
-                    <form id="signupForm" action="/signup.do" method="post">
+                    <form id="signupForm">
                         <div class="form-group">
                             <label for="signupId">아이디</label>
                             <div class="input-group">
@@ -31,34 +31,34 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="signupPassword">비밀번호</label>
+                            <label for="Password">비밀번호</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="signupPassword" type="password" class="form-control" name="signupPassword" placeholder="비밀번호">
+                                <input id="Password" type="password" class="form-control" name="Password" placeholder="비밀번호">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="signupName">이름</label>
+                            <label for="Name">이름</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                <input id="signupName" type="text" class="form-control" name="signupName" placeholder="이름">
+                                <input id="Name" type="text" class="form-control" name="Name" placeholder="이름">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="signupEmail">이메일</label>
+                            <label for="Email">이메일</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input id="signupEmail" type="email" class="form-control" name="signupEmail" placeholder="이메일">
+                                <input id="Email" type="email" class="form-control" name="Email" placeholder="이메일">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="signupDob">생년월일</label>
+                            <label for="Birthday">생년월일</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                <input id="signupDob" type="date" class="form-control" name="signupDob">
+                                <input id="Birthday" type="date" class="form-control" name="birthday">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">회원가입</button>
+                        <button type="button" class="btn btn-primary btn-block" id="signUpBtn">회원가입</button>
                     </form>
                 </div>
             </div>

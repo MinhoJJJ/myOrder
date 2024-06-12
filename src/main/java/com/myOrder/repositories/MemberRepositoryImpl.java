@@ -10,6 +10,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.engine.spi.SessionLazyDelegator;
 
+import java.time.LocalDate;
+
 @RequiredArgsConstructor   //생성자를 자동으로 만들어주는 어노테이션
 public class MemberRepositoryImpl implements CustomMemberRepository{
 
@@ -37,10 +39,15 @@ public class MemberRepositoryImpl implements CustomMemberRepository{
     @Override
     @Transactional
     public int insertMember(memberDto memberDto) {
-        entityManager.createNativeQuery("INSERT INTO user_info (ID,PASSWORD,NAME) VALUES (?, ?, ?)")
+        entityManager.createNativeQuery("INSERT INTO user_info (ID,PASSWORD,NAME,LANG,BIRTHDAY,EMAIL,JOINDATE,AUTH) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
                 .setParameter(1, memberDto.getId())
                 .setParameter(2, memberDto.getPassword())
                 .setParameter(3, memberDto.getName())
+                .setParameter(4, "KR")
+                .setParameter(5, memberDto.getBirthday())
+                .setParameter(6, memberDto.getEmail())
+                .setParameter(7, LocalDate.now())
+                .setParameter(8, "01")
                 .executeUpdate();
         return 1;
     }
