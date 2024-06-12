@@ -95,15 +95,5 @@ public class loginServiceImpl implements loginService {
              throw new UsernameNotFoundException("조회된 회원이 없습니다");
          }
     }
-
-    private Locale getUserLocale(String lang) {
-        if (lang.equals("EN")) {
-            return Locale.ENGLISH;
-        }else if(lang.equals("JP")){
-            return Locale.JAPANESE;
-        }else{
-            return Locale.KOREAN;
-        }
-    }
 }
 
