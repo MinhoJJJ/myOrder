@@ -39,7 +39,7 @@ public class MemberRepositoryImpl implements CustomMemberRepository{
     @Override
     @Transactional
     public int insertMember(memberDto memberDto) {
-        entityManager.createNativeQuery("INSERT INTO user_info (ID,PASSWORD,NAME,LANG,BIRTHDAY,EMAIL,JOINDATE,AUTH) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+        entityManager.createNativeQuery("INSERT INTO user_info (ID,PASSWORD,NAME,LANG,BIRTHDAY,EMAIL,JOINDATE,AUTH,CURRENCY) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)")
                 .setParameter(1, memberDto.getId())
                 .setParameter(2, memberDto.getPassword())
                 .setParameter(3, memberDto.getName())
@@ -48,6 +48,7 @@ public class MemberRepositoryImpl implements CustomMemberRepository{
                 .setParameter(6, memberDto.getEmail())
                 .setParameter(7, LocalDate.now())
                 .setParameter(8, "01")
+                .setParameter(9, "KRW")
                 .executeUpdate();
         return 1;
     }

@@ -49,6 +49,10 @@ public class Member {
     @Column(name = "EMAIL")
     private String email;
 
+    @Getter
+    @Column(name = "CURRENCY")
+    private String currency;
+
     public void setId(String id) {this.id = id;}
     public void setPassword(String password) {this.password = password;}
     public void setName(String name) {this.name = name;}
@@ -58,6 +62,7 @@ public class Member {
     public void setUpt_dt(LocalDate upt_dt) { this.upt_dt = upt_dt;}
     public void setBirthday(LocalDate birthday) {this.birthday = birthday;}
     public void setEmail(String email) {this.email = email;}
+    public void setCurrency(String currency) {this.currency = currency;}
 
 
 

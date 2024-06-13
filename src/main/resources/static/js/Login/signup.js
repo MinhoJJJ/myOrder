@@ -13,7 +13,7 @@ $(document).ready(function () {
         var birthday = $('#Birthday').val();
         var email = $('#Email').val();
         var name = $('#Name').val();
-        
+
         // var writeForm = $('#signupForm');
         // var other_data = writeForm.serializeArray();
         // var formData  = new FormData();

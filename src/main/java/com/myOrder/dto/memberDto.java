@@ -22,6 +22,8 @@ public class memberDto {
     private String email;
     @Getter
     private LocalDate upt_dt;
+    @Getter
+    private String currency;
 
     public void setId(String id) {this.id = id;}
     public void setPassword(String password) {this.password = password;}
@@ -32,6 +34,7 @@ public class memberDto {
     public void setBirthday(LocalDate birthday) { this.birthday = birthday;}
     public void setEmail(String email) { this.email = email;}
     public void setUpt_dt(LocalDate upt_dt) { this.upt_dt = upt_dt; }
+    public void setCurrency(String currency) { this.currency = currency;}
 
 
 }
