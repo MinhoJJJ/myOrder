@@ -2,7 +2,7 @@ package com.myOrder.service.Login;
 
 import com.myOrder.dto.memberDto;
 import com.myOrder.entity.Member;
-import com.myOrder.repositories.MemberRepository;
+import com.myOrder.repositories.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;

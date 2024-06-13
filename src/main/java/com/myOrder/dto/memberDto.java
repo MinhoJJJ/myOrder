@@ -5,35 +5,34 @@ import lombok.Setter;
 
 public class memberDto {
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private String id;
-    @Getter
-    @Setter
+
+    @Getter @Setter
     private String password;
-    @Getter
-    @Setter
+
+    @Getter @Setter
     private String name;
-    @Getter
-    @Setter
-    private String auth;
-    @Getter
-    @Setter
-    private LocalDate joinDate;
-    @Getter
-    @Setter
-    private String lang;
-    @Getter
-    @Setter
-    private LocalDate birthday;
-    @Getter
-    @Setter
+
+    @Getter @Setter
+    private String auth;                //권한
+
+    @Getter @Setter
+    private LocalDate joinDate;         // 가입일
+
+    @Getter @Setter
+    private String lang;                // 사용자 언어
+
+    @Getter @Setter
+    private LocalDate birthday;         // 생년월일
+
+    @Getter @Setter
     private String email;
-    @Getter
-    @Setter
-    private LocalDate upt_dt;
-    @Getter
-    @Setter
-    private String currency;
+
+    @Getter @Setter
+    private LocalDate upt_dt;           // 수정일
+
+    @Getter @Setter
+    private String currency;            // 사용자 통화
 
 }

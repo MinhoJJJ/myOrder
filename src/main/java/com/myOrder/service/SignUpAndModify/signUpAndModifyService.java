@@ -1,7 +1,6 @@
 package com.myOrder.service.SignUpAndModify;
 
 import com.myOrder.dto.memberDto;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

@@ -1,19 +1,19 @@
-package com.myOrder.repositories;
+package com.myOrder.repositories.member;
 
 import com.myOrder.dto.memberDto;
 import com.myOrder.entity.Member;
 import com.myOrder.entity.QMember;
+import com.myOrder.repositories.member.CustomMemberRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.engine.spi.SessionLazyDelegator;
 
 import java.time.LocalDate;
 
 @RequiredArgsConstructor   //생성자를 자동으로 만들어주는 어노테이션
-public class MemberRepositoryImpl implements CustomMemberRepository{
+public class MemberRepositoryImpl implements CustomMemberRepository {
 
     final JPAQueryFactory query;
     QMember qMember = QMember.member;

@@ -1,4 +1,4 @@
-package com.myOrder.repositories;
+package com.myOrder.repositories.member;
 
 import com.myOrder.dto.memberDto;
 import com.myOrder.entity.Member;
