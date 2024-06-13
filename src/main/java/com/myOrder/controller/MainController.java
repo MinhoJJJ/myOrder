@@ -15,6 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 public class MainController {
 
+    /**
+     * 로그인 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @GetMapping("/")
     public ModelAndView start(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "exception", required = false) String exception) {
@@ -26,10 +33,15 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
-
+    /**
+     * 메인 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/main.do")
     public ModelAndView moveMain(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================MainController.moveMain 메인화면 이동 ====================");
         ModelAndView modelAndView;
         modelAndView = new ModelAndView("main/main");
         HttpSession session = request.getSession(true);
@@ -38,7 +50,13 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
-
+    /**
+     * 거래추가 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/transaction.do")
     public ModelAndView moveTransation(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
         ModelAndView modelAndView;
@@ -49,6 +67,13 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
+    /**
+     * 헤더단 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/header.do")
     public ModelAndView moveHeader(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
         ModelAndView modelAndView;
@@ -59,7 +84,13 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
-
+    /**
+     * 보고서 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/report.do")
     public ModelAndView moveReport(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
         ModelAndView modelAndView;
@@ -70,7 +101,13 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
-
+    /**
+     * 설정 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/setting.do")
     public ModelAndView moveSetting(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
         ModelAndView modelAndView;
@@ -81,9 +118,15 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
+    /**
+     * 회원정보 수정 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/modify.do")
     public ModelAndView moveModify(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================MainController.moveModify 정보수정 화면 이동 ====================");
         ModelAndView modelAndView;
         modelAndView = new ModelAndView("main/modify");
         HttpSession session = request.getSession(true);
@@ -92,9 +135,15 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
+    /**
+     * 전체내역 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/totalList.do")
     public ModelAndView moveTotalList(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================MainController.moveTotalList 전체내역 화면 이동 ====================");
         ModelAndView modelAndView;
         modelAndView = new ModelAndView("main/totalList");
         HttpSession session = request.getSession(true);
@@ -103,10 +152,22 @@ public class MainController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
+    /**
+     * 회원가입 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
+    @RequestMapping("/moveSignUp.do")
+    public ModelAndView moveSignUp(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
+        ModelAndView modelAndView;
+        modelAndView = new ModelAndView("login/signUp");
+        HttpSession session = request.getSession(true);
 
-    // 레스트 컨트롤러 아닌 방식
-//    @GetMapping("/")
-//    public String main() {
-//        return "/login/loginForm.html";
-//    }
+        modelAndView.addObject("error", error);
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
+
 }

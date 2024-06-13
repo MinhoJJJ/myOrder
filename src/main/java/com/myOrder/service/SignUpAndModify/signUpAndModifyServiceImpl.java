@@ -20,6 +20,13 @@ public class signUpAndModifyServiceImpl implements signUpAndModifyService {
     @Autowired
     CategoryRepository categoryRepository;
 
+    /**
+     * 아이디 비밀번호 유효성 체크
+     * @return HashMap<String, Object>
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     public HashMap<String, Object> checkDuplicateId(memberDto memberDto) {
         Member member = new Member();
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -34,6 +41,13 @@ public class signUpAndModifyServiceImpl implements signUpAndModifyService {
         return resultMap;
     }
 
+    /**
+     * 회원가입
+     * @return HashMap<String, Object>
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     public HashMap<String, Object> signUpMember(memberDto memberDto) {
 
         Member member = new Member();

@@ -15,17 +15,28 @@ import java.util.HashMap;
 @Slf4j
 public class SignUpAndModifyController {
     private final signUpAndModifyService signUpAndModifyService;
-
+    /**
+     * 아이디 비밀번호 유효성 체크
+     * @return HashMap<String, Object>
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/checkDuplicateIdAjax.do")
     public HashMap<String, Object> checkDuplicateIdAjax(memberDto memberDto, HttpServletRequest request) throws Exception {
         // 아이디 비밀번호 유효성 체크 (중복시 S값 , 아닐시 F)
         return signUpAndModifyService.checkDuplicateId(memberDto);
 
     }
-
+    /**
+     * 회원가입
+     * @return HashMap<String, Object>
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/signUp.do")
     public HashMap<String, Object> signUp(memberDto memberDto, HttpServletRequest request) throws Exception {
-
         // 회원가입 (성공시 S , 실패 F)
         return signUpAndModifyService.signUpMember(memberDto);
 

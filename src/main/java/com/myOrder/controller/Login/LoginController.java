@@ -25,7 +25,13 @@ public class LoginController {
 
     private final loginService loginService;
 
-
+    /**
+     * 로그인 로직 사용안함
+     * @return UserDetails
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @RequestMapping("/login.do")
     public UserDetails login(memberDto memberDto, HttpServletRequest request) throws Exception {
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -45,15 +51,5 @@ public class LoginController {
         }else{
             throw new UsernameNotFoundException("조회된 회원이 없습니다");
         }
-    }
-    @RequestMapping("/moveSignUp.do")
-    public ModelAndView moveSignUp(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        ModelAndView modelAndView;
-        modelAndView = new ModelAndView("login/signUp");
-        HttpSession session = request.getSession(true);
-
-        modelAndView.addObject("error", error);
-        modelAndView.addObject("exception", exception);
-        return modelAndView;
     }
 }

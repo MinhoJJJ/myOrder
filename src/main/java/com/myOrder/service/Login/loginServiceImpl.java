@@ -29,6 +29,14 @@ public class loginServiceImpl implements loginService {
     @Autowired
     private HttpServletRequest request;
 
+
+    /**
+     * 유저 중복 체크
+     * @return HashMap<String, Object>
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     public HashMap<String, Object> findByUserInfo(memberDto memberDto) {
         Member member = new Member();
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -56,8 +64,14 @@ public class loginServiceImpl implements loginService {
 
         return resultMap;
     }
+    /**
+     * 시큐리티 기본 로그인 로직
+     * @return UserDetails
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
     @Override
-    //시큐리티 기본 로그인 로직
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("====================loginService.loadUserByUsername 디폴드 로그인 체크 ====================");
 
