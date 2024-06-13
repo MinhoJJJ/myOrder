@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>D:/myLog/application.log</file>
+        <encoder>
+            <pattern>[%date{yyyy-MM-dd HH:mm:ss}]- %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Console Appender 설정 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%date{yyyy-MM-dd HH:mm:ss}]- %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <root level="info">
+        <appender-ref ref="FILE" />
+    </root>
+
+    <!-- 톰캣 콘솔에 출력하는 로그 레벨 설정 -->
+    <logger name="org.apache.catalina.startup.DigesterFactory" level="OFF" />
+    <logger name="org.apache.catalina.util.LifecycleBase" level="OFF" />
+    <logger name="org.apache.coyote.http11.Http11NioProtocol" level="OFF" />
+    <logger name="org.apache.catalina.core.StandardService" level="OFF" />
+
+    <!-- 특정 로거(Console 출력을 위한 설정 예시) -->
+    <logger name="com.myOrder.config.LoggingInterceptor" level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+</configuration>

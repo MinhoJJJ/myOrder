@@ -28,8 +28,6 @@ public class LoginController {
 
     @RequestMapping("/login.do")
     public UserDetails login(memberDto memberDto, HttpServletRequest request) throws Exception {
-
-        log.info("====================loginController.login 로그인 체크 ====================");
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
         // 아이디 비밀번호 체크
         resultMap = loginService.findByUserInfo(memberDto);
@@ -50,7 +48,6 @@ public class LoginController {
     }
     @RequestMapping("/moveSignUp.do")
     public ModelAndView moveSignUp(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================loginController.moveSignUp 회원가입 이동 ====================");
         ModelAndView modelAndView;
         modelAndView = new ModelAndView("login/signUp");
         HttpSession session = request.getSession(true);

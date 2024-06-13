@@ -41,7 +41,6 @@ public class MainController {
 
     @RequestMapping("/transaction.do")
     public ModelAndView moveTransation(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================MainController.moveTransation 거래추가 화면 이동 ====================");
         ModelAndView modelAndView;
         modelAndView = new ModelAndView("main/transaction");
         HttpSession session = request.getSession(true);
@@ -52,7 +51,6 @@ public class MainController {
     }
     @RequestMapping("/header.do")
     public ModelAndView moveHeader(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================MainController.moveHeader 헤더화면 추가 ====================");
         ModelAndView modelAndView;
         modelAndView = new ModelAndView("main/header");
         HttpSession session = request.getSession(true);
@@ -64,7 +62,6 @@ public class MainController {
 
     @RequestMapping("/report.do")
     public ModelAndView moveReport(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================MainController.moveReport 리포트 화면 이동 ====================");
         ModelAndView modelAndView;
         modelAndView = new ModelAndView("main/report");
         HttpSession session = request.getSession(true);
@@ -76,7 +73,6 @@ public class MainController {
 
     @RequestMapping("/setting.do")
     public ModelAndView moveSetting(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
-        log.info("====================MainController.moveSetting 셋팅 화면 이동 ====================");
         ModelAndView modelAndView;
         modelAndView = new ModelAndView("main/setting");
         HttpSession session = request.getSession(true);

@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -15,6 +17,10 @@ public class WebConfig implements WebMvcConfigurer {
     4. @EnableWebMvc 를 통해 활성화된 Web MVC 애플리케이션의 구성정보를 커스터마이징하는 것을 돕기도 한다.
     5. 스프링 부트에 있는 기본 설정이 마음에 들지 않거나 스프링에 추가적인 설정을 해줄 필요가 있을 때 사용한다.
 */
+
+    @Autowired
+    private LoggingInterceptor loggingInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {         //request 를 핸들링 하기 전 후로 처리할 작업이 있을 때 이를 위한 커스텀 인터셉터를 구성하는 용도로 사용할 수 있다.
    /*
@@ -23,6 +29,9 @@ public class WebConfig implements WebMvcConfigurer {
     */
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang"); // 요청 파라미터 이름 설정
+
+        registry.addInterceptor(loggingInterceptor)
+                .addPathPatterns("/**");
         registry.addInterceptor(localeChangeInterceptor);
     }
 }
