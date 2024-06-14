@@ -3,6 +3,7 @@ package com.myOrder.service.Login;
 import com.myOrder.dto.memberDto;
 import com.myOrder.entity.Member;
 import com.myOrder.repositories.member.MemberRepository;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -82,7 +83,6 @@ public class loginServiceImpl implements loginService {
 
         memberDto.setId(username);
         member = memberRepository.findByUserId(memberDto);
-        System.out.println("member.getLang(): "+member.getLang());
 
         Locale locale;
         if (member.getLang().equals("EN")) {
@@ -94,6 +94,9 @@ public class loginServiceImpl implements loginService {
         }
         localeResolver.setLocale(request, null, locale); // 로그인시 세션로케일에 언어설정을 전달
 
+        // 세션에 사용자 아이디 저장
+        HttpSession session = request.getSession();
+        session.setAttribute("userId", username);
 
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
          if(member != null) { // 조회된 회원이 있다면
