@@ -21,7 +21,8 @@ public class LoggingInterceptor implements HandlerInterceptor {
 
             log.info("┌Request Param───────────────────────────────────────────────────────────────");
             log.info(" requestURI - "+uri);
-            log.info(" Controller Class : "+handlerMethod.getBeanType().getSimpleName());
+            log.info(" Controller Claㄴㄴㄴss : "+handlerMethod.getBeanType().getSimpleName());
+            log.info(" Controller Claㄴㄴㄴss : "+handlerMethod.getBeanType().getSimpleName());
             log.info(" method - "+handlerMethod.getMethod().getName());
             Enumeration<String> parameterNames = request.getParameterNames();
             if(parameterNames.hasMoreElements()) {
