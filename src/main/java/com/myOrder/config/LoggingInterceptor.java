@@ -17,19 +17,20 @@ public class LoggingInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
+            String uri = request.getRequestURL().toString();
 
-            log.info("--------------------------------------------");
-            log.info("컨트롤러: "+handlerMethod.getBeanType().getSimpleName());
-            log.info("메서드명: "+handlerMethod.getMethod().getName());
+            log.info("┌Request Param───────────────────────────────────────────────────────────────");
+            log.info(" requestURI - "+uri);
+            log.info(" Controller Class : "+handlerMethod.getBeanType().getSimpleName());
+            log.info(" method - "+handlerMethod.getMethod().getName());
             Enumeration<String> parameterNames = request.getParameterNames();
             if(parameterNames.hasMoreElements()) {
-                log.info("파라미터 값 ▼ ");
                 while (parameterNames.hasMoreElements()) {
                     String paramName = parameterNames.nextElement();
-                    log.info(paramName + ": " + request.getParameter(paramName));
+                    log.info(" "+paramName+" - "+ request.getParameter(paramName));
                 }
             }
-            log.info("--------------------------------------------");
+            log.info("└────────────────────────────────────────────────────────────────────────────");
 
         }
         return true;
