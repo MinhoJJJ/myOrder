@@ -19,6 +19,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             String uri = request.getRequestURL().toString();
 
+
             log.info("┌Request Param───────────────────────────────────────────────────────────────");
             log.info(" requestURI - "+uri);
             log.info(" Controller Claㄴㄴㄴss : "+handlerMethod.getBeanType().getSimpleName());
