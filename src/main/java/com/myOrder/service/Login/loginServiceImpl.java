@@ -109,7 +109,7 @@ public class loginServiceImpl implements loginService {
                 // "ROLE_" 접두사가 포함되어 있고 List 형태어이야 함
                 .build();
          }else {
-             throw new UsernameNotFoundException("조회된 회원이 없습니다");
+             throw new UsernameNotFoundException("조회된 회원이 없습니다.");
          }
     }
 }
