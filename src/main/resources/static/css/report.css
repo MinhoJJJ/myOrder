@@ -57,10 +57,12 @@
 
 #prevMonth {
     left: 0;
+    font-size: 25px;
 }
 
 #nextMonth {
     right: 0;
+    font-size: 25px;
 }
 /* 엑셀버튼 */
 .excel-download-btn {

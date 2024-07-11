@@ -35,8 +35,9 @@ table td {
 }
 
 table th {
-    background-color: #f4f4f9;
+    background-color: #4faf53;
     font-weight: bold;
+    color: white;
 }
 
 table tr:last-child td {
