@@ -104,6 +104,7 @@ table {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
+    text-align: center; /* 추가 */
 }
 
 table th,
@@ -111,6 +112,7 @@ table td {
     padding: 1rem;
     border-bottom: 1px solid #ddd;
     text-align: left;
+    text-align: center; /* 추가 */
 }
 
 table th {
@@ -129,4 +131,34 @@ table tr:last-child td {
 }
 .delete-btn:hover{
     color: red;
+}
+/* Date Search 스타일 */
+.date-search {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.date-search label {
+    margin-right: 0.5rem;
+}
+
+.date-search input {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.date-search button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.date-search button:hover {
+    background-color: #45a049;
 }

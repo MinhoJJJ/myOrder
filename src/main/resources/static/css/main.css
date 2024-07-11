@@ -25,6 +25,7 @@ table {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
+    text-align: center; /* 추가 */
 }
 
 table th,
@@ -32,6 +33,7 @@ table td {
     padding: 1rem;
     border-bottom: 1px solid #ddd;
     text-align: left;
+    text-align: center; /* 추가 */
 }
 
 table th {
