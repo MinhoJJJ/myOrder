@@ -20,11 +20,9 @@ public class LoggingInterceptor implements HandlerInterceptor {
             String uri = request.getRequestURL().toString();
 
 
-            log.info("┌Request Param───────────────────────────────────────────────────────────────");
-            log.info(" requestURI - "+uri);
-            log.info(" Controller Class : "+handlerMethod.getBeanType().getSimpleName());
-            log.info(" Controller Class : "+handlerMethod.getBeanType().getSimpleName());
-            log.info(" method - "+handlerMethod.getMethod().getName());
+            log.info("==============================================================");
+            log.info(" 요청주소 : "+uri);
+            log.info(" 컨트롤러.메서드  : "+handlerMethod.getBeanType().getSimpleName() + "."+handlerMethod.getMethod().getName());
             Enumeration<String> parameterNames = request.getParameterNames();
             if(parameterNames.hasMoreElements()) {
                 while (parameterNames.hasMoreElements()) {
@@ -32,7 +30,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
                     log.info(" "+paramName+" - "+ request.getParameter(paramName));
                 }
             }
-            log.info("└────────────────────────────────────────────────────────────────────────────");
+            log.info("==============================================================");
 
         }
         return true;
