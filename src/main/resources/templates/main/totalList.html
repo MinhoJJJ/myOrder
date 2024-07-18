@@ -1,121 +1,86 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전체 내역</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/totalList.css}" />
-    <!-- jQuery 추가 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css">
-    <!-- totalList.js 추가 -->
-    <script src="/js/totalList.js" type="text/javascript"></script>
-    <script>
-        let page = 0;
-        const size = 10; // 한 번에 로드할 데이터 수
+    <title>가계부 전체 내역</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/totalList.css}">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Toast UI Grid CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 
-        // 페이지가 로드되면 처음으로 데이터를 불러옵니다.
-        $(document).ready(function() {
-            const startDate = $('#start-date').val();
-            const endDate = $('#end-date').val();
-            loadTransactions(startDate, endDate);
-        });
-
-        function searchTransactions() {
-            page = 0;
-            $('#transaction-body').empty();
-            const startDate = $('#start-date').val();
-            const endDate = $('#end-date').val();
-            loadTransactions(startDate, endDate);
-        }
-
-        // function loadTransactions() {
-        //     $.ajax({
-        //         url: `/api/transactions?page=${page}&size=${size}`,
-        //         method: 'GET',
-        //         success: function(data) {
-        //             const tbody = $('#transaction-body');
-        //             data.forEach(transaction => {
-        //                 const row = `<tr>
-        //                 <td>${transaction.date}</td>
-        //                 <td>${transaction.description}</td>
-        //                 <td>${transaction.category}</td>
-        //                 <td>${transaction.amount}</td>
-        //             </tr>`;
-        //                 tbody.append(row);
-        //             });
-        //             page++;
-        //         },
-        //         error: function(error) {
-        //             console.error('Error loading transactions', error);
-        //         }
-        //     });
-        // }
-        //
-        // $(window).on('scroll', function() {
-        //     if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
-        //         loadTransactions();
-        //     }
-        // });
-        //
-        // // 페이지가 로드되면 처음으로 데이터를 불러옵니다.
-        // $(document).ready(function() {
-        //     loadTransactions();
-        // });
-    </script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toast UI Grid JS -->
+    <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<header>
-    <h1>가계부</h1>
-    <nav>
-        <ul>
-            <li><a href="main.do">홈</a></li>
-            <li><a href="transaction.do">거래 추가</a></li>
-            <li><a href="report.do">보고서</a></li>
-            <li><a href="totalList.do">전체내역</a></li>
-            <li><a href="setting.do">설정</a></li>
-        </ul>
-    </nav>
-    <div id="user-info">
-        <span id="username">사용자이름</span>님
-        <button id="modify-button" onclick="location.href='modify.do';">정보 수정</button>
-        <button id="logout-button">로그아웃</button>
-    </div>
-</header>
-<main>
-    <section class="recent-transactions">
-        <h2>전체 거래 내역</h2>
-        <div class="date-search">
-            <label for="start-date">시작 날짜:</label>
-            <input type="date" id="start-date" name="start-date">
-            <label for="end-date">종료 날짜:</label>
-            <input type="date" id="end-date" name="end-date">
-            <button onclick="searchTransactions()">검색</button>
+<div id="app">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img id="logoImg" th:src="@{/img/logo.png}" alt="Kakao Logo"/></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main.do">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transaction.do">거래 추가</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="report.do">보고서</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="totalList.do">전체내역</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="setting.do">설정</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                        <span class="navbar-text me-3">
+                            <span id="username" th:text="${userName}"></span>님
+                        </span>
+                    <button class="btn btn-outline-light me-2" onclick="location.href='modify.do';">정보 수정</button>
+                    <button class="btn btn-outline-light" id="logout-button">로그아웃</button>
+                </div>
+            </div>
         </div>
-        <table>
-            <thead>
-            <tr>
-                <th>날짜</th>
-                <th>설명</th>
-                <th>카테고리</th>
-                <th>금액</th>
-                <th>거래 구분</th>
-                <th>삭제</th> <!-- 삭제 컬럼 추가 -->
-            </tr>
-            </thead>
-            <tbody id="transaction-body">
-            <!-- 초기 데이터 -->
-            <tr>
-                <td>2024-05-19</td>
-                <td>지하철 요금</td>
-                <td>교통비</td>
-                <td>₩2,500</td> <!-- 거래 구분 데이터 추가 -->
-                <td>지출</td>
-                <td><button class="delete-btn" data-id="1"><i class="bi bi-trash"></i></button></td> <!-- 삭제 버튼 추가 -->
-            </tr>
-            </tbody>
-        </table>
-    </section>
-</main>
+    </nav>
+
+    <main class="container mt-4">
+        <h2 class="mb-4">전체 거래 내역</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <form id="searchForm" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="start-date" class="form-label">시작 날짜:</label>
+                        <input type="date" class="form-control" id="start-date">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="end-date" class="form-label">종료 날짜:</label>
+                        <input type="date" class="form-control" id="end-date">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary">검색</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="grid"></div>
+    </main>
+</div>
+
+<!-- Custom JS -->
+<script th:src="@{/js/totalList.js}"></script>
 </body>
 </html>

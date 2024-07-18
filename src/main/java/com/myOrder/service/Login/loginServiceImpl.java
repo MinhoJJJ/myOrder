@@ -96,7 +96,7 @@ public class loginServiceImpl implements loginService {
 
         // 세션에 사용자 아이디 저장
         HttpSession session = request.getSession();
-        session.setAttribute("userId", username);
+        session.setAttribute("userName", username);
 
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
          if(member != null) { // 조회된 회원이 있다면

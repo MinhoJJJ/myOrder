@@ -150,6 +150,12 @@ public class MainController {
 
         modelAndView.addObject("error", error);
         modelAndView.addObject("exception", exception);
+
+
+        String name=session.getAttribute("userName").toString();
+        System.out.println("세션이름: "+name);
+        modelAndView.addObject("userName", name);
+
         return modelAndView;
     }
     /**
