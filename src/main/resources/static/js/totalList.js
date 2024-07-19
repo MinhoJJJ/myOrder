@@ -1,5 +1,7 @@
 $(document).ready(function() {
     let grid;
+    let transactions; // 전역 변수로 선언
+
     // AJAX 요청으로 데이터 가져오기
     $.ajax({
         url: '/totalListData.do',
@@ -7,7 +9,7 @@ $(document).ready(function() {
         data: { id: 'wat' },  // 'wat'를 실제 사용자 ID로 변경하세요
         success: function(response) {
             // 서버에서 받은 데이터 처리
-            const transactions = response.map((item, index) => ({
+            transactions = response.map((item, index) => ({
                 list_ndx: index + 1,
                 date: item.date,
                 description: item.description,
@@ -17,27 +19,25 @@ $(document).ready(function() {
             }));
 
             // 그리드 초기화 및 데이터 설정
-            initializeGrid(transactions);
+            initGrid(); // AJAX 요청이 성공한 후에 initGrid 호출
         },
         error: function(xhr, status, error) {
             console.error("데이터를 가져오는 중 오류 발생:", error);
         }
     });
 
-    function initializeGrid(data) {
-        grid = new gridjs.Grid({
-            columns: [
-                { id: 'list_ndx', name: '번호' },
-                { id: 'date', name: '날짜' },
-                { id: 'description', name: '내용' },
-                { id: 'category', name: '카테고리' },
-                { id: 'amount', name: '금액' },
-                { id: 'type', name: '유형' }
-            ],
-            data: data,
-            sort: true,
-            pagination: true
-        }).render(document.getElementById("wrapper"));
+    function formatAmount(amount) {
+        return '₩' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function initGrid() {
+        const el = document.getElementById('grid');
+
+        grid = new tui.Grid({
+            el: el,
+            data: transactions,
+            // ... (나머지 코드는 그대로 유지)
+        });
     }
     function formatAmount(amount) {
         return '₩' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -138,7 +138,4 @@ $(document).ready(function() {
     // 삭제 버튼 추가 및 이벤트 리스너 설정
     $('<button id="deleteButton" class="btn btn-danger mt-3">선택 항목 삭제</button>').insertBefore('#grid');
     $('#deleteButton').on('click', deleteSelectedTransactions);
-
-    // 그리드 초기화
-    initGrid();
 });

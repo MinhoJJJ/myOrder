@@ -1,8 +1,8 @@
 package com.myOrder.controller;
 
 import com.myOrder.entity.Member;
-import com.myOrder.entity.MyHistory;
-import com.myOrder.repositories.myHistory.myHistoryRepository;
+import com.myOrder.entity.Myhistory;
+import com.myOrder.repositories.myHistory.MyHistoryRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.List;
 public class TotalListController {
 
     @Autowired
-    myHistoryRepository myHistoryRepository;
+    MyHistoryRepository myHistoryRepository;
 
     /**
      * 전체내역 페이지 이동
@@ -29,11 +29,11 @@ public class TotalListController {
      * @since 2024. 06. 13.
      */
     @RequestMapping("/totalListData.do")
-    public List<MyHistory> totalListData(String id) {
-        List<MyHistory> myHistory;
+    public List<Myhistory> totalListData(String id) {
+        List<Myhistory> myHistory;
         Member member= new Member();
         member.setId(id);
-        myHistory=myHistoryRepository.findMyHistory(member);
+        myHistory=myHistoryRepository.findMyHistoryById(member);
         return myHistory;
     }
 }
