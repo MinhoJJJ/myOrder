@@ -1,9 +1,9 @@
 $(document).ready(function() {
     let grid;
     const transactions = [
-        { id: 1, date: '2024-05-19', description: '지하철 요금', category: '교통비', amount: '₩2,500', type: '지출' },
-        { id: 2, date: '2024-05-20', description: '점심 식사', category: '식비', amount: '₩10,000', type: '지출' },
-        { id: 3, date: '2024-05-21', description: '월급', category: '수입', amount: '₩3,000,000', type: '수입' },
+        { list_ndx: 1, date: '2024-05-19', description: '지하철 요금', category: '교통비', amount: '₩2,500', type: '지출' },
+        { list_ndx: 2, date: '2024-05-20', description: '점심 식사', category: '식비', amount: '₩10,000', type: '지출' },
+        { list_ndx: 3, date: '2024-05-21', description: '월급', category: '수입', amount: '₩3,000,000', type: '수입' },
     ];
 
     function initGrid() {
