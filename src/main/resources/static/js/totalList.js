@@ -1,10 +1,47 @@
 $(document).ready(function() {
     let grid;
-    const transactions = [
-        { list_ndx: 1, date: '2024-05-19', description: '지하철 요금', category: '교통비', amount: '₩2,500', type: '지출' },
-        { list_ndx: 2, date: '2024-05-20', description: '점심 식사', category: '식비', amount: '₩10,000', type: '지출' },
-        { list_ndx: 3, date: '2024-05-21', description: '월급', category: '수입', amount: '₩3,000,000', type: '수입' },
-    ];
+    // AJAX 요청으로 데이터 가져오기
+    $.ajax({
+        url: '/totalListData.do',
+        type: 'GET',
+        data: { id: 'wat' },  // 'wat'를 실제 사용자 ID로 변경하세요
+        success: function(response) {
+            // 서버에서 받은 데이터 처리
+            const transactions = response.map((item, index) => ({
+                list_ndx: index + 1,
+                date: item.date,
+                description: item.description,
+                category: item.category,
+                amount: formatAmount(item.amount),
+                type: item.type === 'O' ? '지출' : '수입'
+            }));
+
+            // 그리드 초기화 및 데이터 설정
+            initializeGrid(transactions);
+        },
+        error: function(xhr, status, error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
+    });
+
+    function initializeGrid(data) {
+        grid = new gridjs.Grid({
+            columns: [
+                { id: 'list_ndx', name: '번호' },
+                { id: 'date', name: '날짜' },
+                { id: 'description', name: '내용' },
+                { id: 'category', name: '카테고리' },
+                { id: 'amount', name: '금액' },
+                { id: 'type', name: '유형' }
+            ],
+            data: data,
+            sort: true,
+            pagination: true
+        }).render(document.getElementById("wrapper"));
+    }
+    function formatAmount(amount) {
+        return '₩' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     function initGrid() {
         const el = document.getElementById('grid');
