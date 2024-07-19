@@ -1,10 +1,8 @@
 package com.myOrder.repositories.myHistory;
 
-import com.myOrder.dto.memberDto;
-import com.myOrder.entity.Member;
-import com.myOrder.entity.MyHistory;
+import com.myOrder.entity.Myhistory;
+import java.util.List;
 
 public interface CustomMyHistoryRepository {
-    MyHistory findMyHistory(memberDto memberDto);
-
+    List<Myhistory> findMyHistoryById(String id);
 }
