@@ -14,36 +14,27 @@ import java.time.LocalDate;
 @Table(name = "myhistory")
 @Getter
 @Setter
-public class MyHistory {
+public class Myhistory {
 
     @Id
-    @Getter @Setter
     @Column(name = "LIST_NDX", length = 50)
     private String list_ndx;
 
-    @Getter @Setter
     @Column(name = "ID", length = 30)
     private String id;
 
-    @Getter @Setter
     @Column(name = "DATE")
     private LocalDate date;
 
-    @Getter @Setter
     @Column(name = "DESCRIPTION", length = 150)
     private String description;
 
-    @Getter @Setter
     @Column(name = "CATEGORY", length = 100)
     private String category;
 
-    @Getter
-    @Setter
     @Column(name = "AMOUNT", length = 50)
     private String amount;
 
-    @Getter
-    @Setter
     @Column(name = "TYPE", length = 5)
     private String type;
 
