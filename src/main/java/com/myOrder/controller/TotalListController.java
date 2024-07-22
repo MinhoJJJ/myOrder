@@ -21,13 +21,8 @@ public class TotalListController {
     @Autowired
     MyHistoryRepository myHistoryRepository;
 
-    /**
-     * 전체내역 페이지 이동
-     * @return ModelAndView
-     * @throws Exception
-     * @author 정민호
-     * @since 2024. 06. 13.
-     */
+
+    //전체내역 페이지 이동
     @RequestMapping("/totalListData.do")
     public List<Myhistory> totalListData(String id) {
         List<Myhistory> myHistory;

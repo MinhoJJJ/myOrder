@@ -20,7 +20,6 @@ public class CategoryRepositoryImpl implements CustomCategoryRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     @Override
     @Transactional
     public int insertInComeCategory(String id) {

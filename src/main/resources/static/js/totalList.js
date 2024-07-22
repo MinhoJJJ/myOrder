@@ -15,7 +15,7 @@ $(document).ready(function() {
                 description: item.description,
                 category: item.category,
                 amount: formatAmount(item.amount),
-                type: item.type === 'O' ? '지출' : '수입'
+                type: item.type === 'E' ? '지출' : '수입'
             }));
 
             // 그리드 초기화 및 데이터 설정
