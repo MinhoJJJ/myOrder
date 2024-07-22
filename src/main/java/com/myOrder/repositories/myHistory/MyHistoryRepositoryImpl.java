@@ -3,20 +3,19 @@ import com.myOrder.entity.Member;
 import com.myOrder.entity.Myhistory;
 import com.myOrder.entity.QMyhistory;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.springframework.stereotype.Repository;
+import jakarta.persistence.PersistenceContext;
+import lombok.RequiredArgsConstructor;
 
 import jakarta.persistence.EntityManager;
 import java.util.List;
 
-@Repository
+@RequiredArgsConstructor
 public class MyHistoryRepositoryImpl implements CustomMyHistoryRepository {
 
-    private final JPAQueryFactory queryFactory;
-    private final QMyhistory qMyhistory = QMyhistory.myhistory;
-
-    public MyHistoryRepositoryImpl(EntityManager entityManager) {
-        this.queryFactory = new JPAQueryFactory(entityManager);
-    }
+    final JPAQueryFactory queryFactory;
+    QMyhistory qMyhistory = QMyhistory.myhistory;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public List<Myhistory> findMyHistoryById(Member member) {

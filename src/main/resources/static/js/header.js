@@ -1,13 +1,14 @@
-// static/js/header.js
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("header.do")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("header").innerHTML = data;
-        });
+$(document).ready(function() {
+    console.log("나실행")
+    var currentPage = window.location.pathname.split('/').pop().split('.')[0];
+    console.log(currentPage);
+    console.log(document.baseURI);
 
-    function showUserGreeting(username) {
-        document.getElementById('userGreeting').innerHTML = `${username} 님, 안녕하세요`;
+    if (document.baseURI.includes(currentPage)) {
+        console.log("나실행1")
+        $('#'+currentPage).addClass('active');
+    } else {
+        console.log("나실행2")
+        $(this).removeClass('active');
     }
-
 });

@@ -1,196 +1,82 @@
 /* static/css/setting.css */
-h3 {
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-.settings {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.setting-item {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-.setting-item label {
-    display: block;
-    margin-bottom: 0.5rem;
-    width: 20%;
-    font-size: 14px;
-}
-
-.setting-item input, .setting-item select {
-    width: calc(80% - 6rem); /* 전체 너비에서 버튼 너비를 제외 */
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-right: 0.5rem; /* 버튼과 간격을 둠 */
-    font-size: 0.9rem; /* 글씨 크기 조정 */
-}
-/* 저장,추가 버튼 스타일 */
-.add-button {
-    padding: 0.5rem 1rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-block; /* 인라인 요소로 변경 */
-    vertical-align: top; /* 인풋 필드와 수직 정렬 */
-    font-size: 0.9rem; /* 글씨 크기 조정 */
-}
-
-.add-button:hover {
-    background-color: #45a049;
-}
-
-/* 제거 버튼 스타일 */
-.delete-button {
-    padding: 0.5rem 1rem;
-    background-color: #c0392b;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-block; /* 인라인 요소로 변경 */
-    vertical-align: top; /* 인풋 필드와 수직 정렬 */
-    font-size: 0.9rem; /* 글씨 크기 조정 */
-}
-
-.delete-button:hover {
-    background-color: #992d22;
-}
-
-.category-section {
-    margin-top: 2rem;
-}
-
-
-ul#incomeCategoryList, ul#expenseCategoryList {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 0 0;
-}
-
-ul#incomeCategoryList li, ul#expenseCategoryList li {
-    background-color: #f4f4f9;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-ul#incomeCategoryList li button, ul#expenseCategoryList li button {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 0.3rem 0.6rem;
-    cursor: pointer;
-}
-
-ul#incomeCategoryList li button:hover, ul#expenseCategoryList li button:hover {
-    background-color: #c0392b;
-}
-/* static/css/header.css */
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-main {
-    padding: 2rem;
-    max-width: 700px;
-    margin: 0 auto;
-}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-h2 {
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 0.5rem;
+
+#app {
+    flex: 1;
+}
+
+.container {
+    max-width: 800px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     margin-bottom: 1rem;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+.card-body {
+    padding: 1rem;
 }
 
-nav ul li {
-    margin: 0 1rem;
+.card-title {
+    color: #0d6efd;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 0rem 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
 }
 
-/* User Info */
-#user-info {
-    margin-right: 1rem;
-    position: fixed;
-    right: 0;
-    top: 0;
-    padding: 0rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
 }
 
-#username {
-    font-weight: bold;
-}
-#logout-button {
-    background-color: rgba(14, 128, 16, 0.5); /* 반투명한 녹색 */
-    margin-left: 0.5rem;
-    color: white;
-    padding: 0.2rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-#modify-button {
-    background-color: #0e8010; /* 반투명한 녹색 */
-    margin-left: 0.5rem;
-    color: white;
-    padding: 0.2rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.input-group {
+    margin-bottom: 0.75rem;
 }
 
+.input-group .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group > * {
+        margin-bottom: 0.5rem;
+    }
+
+    .input-group .btn {
+        border-radius: 0.25rem;
+    }
+}

@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>가계부</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+    <title>가계부 헤더</title>
 </head>
 <body>
-<header>
-    <h1>가계부</h1>
-    <nav>
-        <ul>
-            <li><a href="main.do">홈</a></li>
-            <li><a href="transaction.do">거래 추가</a></li>
-            <li><a href="report.do">보고서</a></li>
-            <li><a href="setting.do">설정</a></li>
-        </ul>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img id="logoImg" th:src="@{/img/logo.png}" alt="Kakao Logo"/></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" id="main" href="main.do">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="transaction" href="transaction.do">거래 추가</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="report" href="report.do">보고서</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="totalList" href="totalList.do">전체내역</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="setting" href="setting.do">설정</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <span class="navbar-text me-3">
+                        <span id="username" th:text="${userName}"></span>님
+                    </span>
+                    <button class="btn btn-outline-light me-2" onclick="location.href='modify.do';">정보 수정</button>
+                    <button class="btn btn-outline-light" id="logout-button">로그아웃</button>
+                </div>
+            </div>
+        </div>
     </nav>
-    <div id="user-info">
-        <span id="username">사용자이름</span>님
-        <button id="modify-button" onclick="location.href='modify.do';">정보 수정</button>
-        <button id="logout-button">로그아웃</button>
-    </div>
 </header>
-<footer>
-    <p>&copy; 2024 가계부. All rights reserved.</p>
-</footer>
 </body>
 </html>
