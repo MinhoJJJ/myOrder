@@ -1,7 +1,8 @@
-package com.myOrder.service;
+package com.myOrder.service.Setting;
 
 
 import com.myOrder.repositories.category.CategoryRepository;
+import com.myOrder.service.Setting.settingService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
