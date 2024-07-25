@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 @Entity
@@ -31,8 +32,8 @@ public class Myhistory {
     @Column(name = "CATEGORY", length = 100)
     private String category;
 
-    @Column(name = "AMOUNT", length = 50)
-    private String amount;
+    @Column(name = "AMOUNT")
+    private BigInteger amount;
 
     @Column(name = "TYPE", length = 5)
     private String type;

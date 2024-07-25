@@ -1,12 +1,12 @@
 $(document).ready(function() {
     let grid;
     let transactions; // 전역 변수로 선언
-
+    let userId=$('#userId').val();
     // AJAX 요청으로 데이터 가져오기
     $.ajax({
         url: '/totalListData.do',
         type: 'GET',
-        data: { id: 'wat' },  // 'wat'를 실제 사용자 ID로 변경하세요
+        data: { id: userId },
         success: function(response) {
             // 서버에서 받은 데이터 처리
             transactions = response.map((item, index) => ({

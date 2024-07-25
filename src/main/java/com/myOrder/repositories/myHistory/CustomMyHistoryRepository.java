@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CustomMyHistoryRepository {
     List<Myhistory> findMyHistoryById(Member member);
+    List<Myhistory> findMyHistoryByIdAndType(String type,String id, int month);
+
 }

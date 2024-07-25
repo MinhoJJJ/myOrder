@@ -73,7 +73,7 @@ public class loginServiceImpl implements loginService {
      * @since 2024. 06. 13.
      */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         log.info("====================loginService.loadUserByUsername 디폴드 로그인 체크 ====================");
 
         // 사용자의 언어 설정을 가져오는 로직을 추가합니다.
@@ -81,8 +81,9 @@ public class loginServiceImpl implements loginService {
         Member member = new Member();
         memberDto memberDto = new memberDto();
 
-        memberDto.setId(username);
+        memberDto.setId(userId);
         member = memberRepository.findByUserId(memberDto);
+        String username = member.getName();
 
         Locale locale;
         if (member.getLang().equals("EN")) {
@@ -94,9 +95,10 @@ public class loginServiceImpl implements loginService {
         }
         localeResolver.setLocale(request, null, locale); // 로그인시 세션로케일에 언어설정을 전달
 
-        // 세션에 사용자 아이디 저장
+        // 세션에 사용자 아이디&닉네임 저장
         HttpSession session = request.getSession();
         session.setAttribute("userName", username);
+        session.setAttribute("userId", userId);
 
         String[] auth = {"ROLE_USER", "ROLE_ADMIN"};
          if(member != null) { // 조회된 회원이 있다면

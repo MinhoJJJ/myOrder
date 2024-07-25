@@ -17,7 +17,7 @@ public class myHistoryDto {
 
     private String category;
 
-    private String amount;
+    private int amount;
 
     private String type;
 }

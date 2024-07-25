@@ -29,7 +29,7 @@
     <div class="report-card">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <span class="month-nav">&lt;</span>
-            <h2 class="mb-0">2020년 9월</h2>
+            <h2 class="mb-0"><span id="year"></span>년 <span id="month"></span>월</h2>
             <span class="month-nav">&gt;</span>
         </div>
         <div class="report-type-selector mb-3">
@@ -42,55 +42,8 @@
                 <canvas id="expenseChart"></canvas>
             </div>
             <div class="col-md-6">
-                <ul class="expense-list">
-                    <li class="expense-item">
-                        <div class="expense-info">
-                            <span class="expense-color" style="background-color: #FF6384;"></span>
-                            <span class="expense-name">주거비</span>
-                        </div>
-                        <span class="expense-amount">2,650,000원</span>
-                        <span class="expense-percentage">70.1%</span>
-                    </li>
-                    <li class="expense-item">
-                        <div class="expense-info">
-                            <span class="expense-color" style="background-color: #FF9F40;"></span>
-                            <span class="expense-name">식비</span>
-                        </div>
-                        <span class="expense-amount">373,623원</span>
-                        <span class="expense-percentage">9.9%</span>
-                    </li>
-                    <li class="expense-item">
-                        <div class="expense-info">
-                            <span class="expense-color" style="background-color: #FFCD56;"></span>
-                            <span class="expense-name">생활용품</span>
-                        </div>
-                        <span class="expense-amount">259,820원</span>
-                        <span class="expense-percentage">6.9%</span>
-                    </li>
-                    <li class="expense-item">
-                        <div class="expense-info">
-                            <span class="expense-color" style="background-color: #4BC0C0;"></span>
-                            <span class="expense-name">교통비</span>
-                        </div>
-                        <span class="expense-amount">254,987원</span>
-                        <span class="expense-percentage">6.7%</span>
-                    </li>
-                    <li class="expense-item">
-                        <div class="expense-info">
-                            <span class="expense-color" style="background-color: #36A2EB;"></span>
-                            <span class="expense-name">문화</span>
-                        </div>
-                        <span class="expense-amount">169,445원</span>
-                        <span class="expense-percentage">4.5%</span>
-                    </li>
-                    <li class="expense-item">
-                        <div class="expense-info">
-                            <span class="expense-color" style="background-color: #9966FF;"></span>
-                            <span class="expense-name">의료</span>
-                        </div>
-                        <span class="expense-amount">70,048원</span>
-                        <span class="expense-percentage">1.9%</span>
-                    </li>
+                <ul class="expense-list" id="expenseList">
+                    <!-- 여기에 동적으로 리스트 아이템이 추가됩니다 -->
                 </ul>
             </div>
         </div>
