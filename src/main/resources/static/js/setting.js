@@ -1,30 +1,40 @@
 $(document).ready(function () {
     $('#addIncomeCategoryButton').click(function () {
         var categoryName = $('#newIncomeCategory').val();
-        insertCategoryName("I",categoryName,)
+        var categoryColor = $('#newIncomeCategoryColor').val();
+        insertCategoryName("I",categoryName,categoryColor)
     });
 
     $('#addExpenseCategoryButton').click(function () {
         var categoryName = $('#newExpenseCategory').val();
-        insertCategoryName("E",categoryName)
+        var categoryColor = $('#newExpenseCategoryColor').val();
+        insertCategoryName("E",categoryName,categoryColor)
     });
 
     //카테고리 만들기
 
-    function insertCategoryName(gubun,categoryName){
+    function insertCategoryName(gubun ,categoryName ,color){
+
         $.ajax({
             url: '/insertCategoryName.do', // 실제 아이디 중복 확인 URL로 변경
             method: 'POST',
-            data: { categoryName: categoryName, gubun: gubun},
+            data: { id: "wat", categoryName: categoryName, gubun: gubun, color: color},
             success: function (response) {
-                if (response.isDuplicate) {
-                    alert('이미 사용 중인 아이디입니다.');
+                if (response.result == "S") {
+
+                    // 성공한 경우 카테고리 입력란 초기화
+                    if(gubun =='I'){
+                        $('#newIncomeCategory').val("");
+                    }else{
+                        $('#newExpenseCategory').val("");
+                    }
+                    alert(response.message);
                 } else {
-                    alert('사용 가능한 아이디입니다.');
+                    alert(response.message);
                 }
             },
             error: function () {
-                alert('중복 확인 중 오류가 발생했습니다.');
+                alert('카테고리 추가에 실패하였습니다.');
             }
         });
     }

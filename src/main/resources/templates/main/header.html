@@ -34,6 +34,7 @@
                 <div class="d-flex">
                     <span class="navbar-text me-3">
                         <span id="username" th:text="${session.userName}"></span> 님
+                        <input type="hidden" id="userId" th:value="${session.userId}">
                     </span>
                     <button class="btn btn-outline-light me-2" onclick="location.href='modify.do';">정보 수정</button>
                     <button class="btn btn-outline-light" id="logout-button">로그아웃</button>

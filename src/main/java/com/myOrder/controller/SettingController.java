@@ -1,34 +1,54 @@
 package com.myOrder.controller;
-
-
-import com.myOrder.entity.Member;
-import com.myOrder.entity.Myhistory;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.myOrder.service.category.categoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @Slf4j
 public class SettingController {
 
-    //전체내역 페이지 이동
-//    @RequestMapping("/insertCategoryName.do")
-//    public List<Myhistory> insertCategoryName(String gubun,String id) {
-////        List<Myhistory> myHistory;
-////        Member member= new Member();
-////        member.setId(id);
-////        //myHistory=myHistoryRepository.findMyHistoryById(member);
-////        return myHistory;
-//    }
-    public int checkNowCategory(String gubun,String id){
-        return 0;
-    }
+    @Autowired
+    categoryService categoryService;
+
+    //카테고리 추가
+      @RequestMapping("/insertCategoryName.do")
+      public HashMap<String, Object> insertCategoryName(
+              @RequestParam String id ,
+              @RequestParam String gubun,
+              @RequestParam String categoryName,
+              @RequestParam String color)
+      {
+
+          HashMap<String, Object> response = new HashMap<>();
+
+          try {
+
+              // 서비스단으로 이동
+              int cnt=categoryService.addOrUpdateCategory(id,gubun, categoryName, color);
+              if(cnt == 0){
+                  response.put("result", "F");
+                  response.put("message", "카테고리 추가에 실패하였습니다.");
+              }else if(cnt == 9){
+                  response.put("result", "F");
+                  response.put("message", "카테고리 갯수가 최대입니다. (10개)");
+              }else{
+                  response.put("result", "S");
+                  response.put("message", "카테고리 추가에 성공하였습니다.");
+              }
+              response.put("result", "S");
+          } catch (Exception e) {
+              response.put("result", "F");
+              response.put("message", e.getMessage());
+          }
+
+          return response;
+      }
 
 }

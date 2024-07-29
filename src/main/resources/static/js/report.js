@@ -18,6 +18,7 @@ $(document).ready(function() {
         $(this).addClass('active');
         const type = $(this).data('type');
         loadData(type,currentMonth);
+
     });
     // 전체내역 불러오기
     function loadData(type,month) {
@@ -98,13 +99,21 @@ $(document).ready(function() {
         $('.expense-list').append(item);
     }
 
-    // 차트 색상
     function updateTotalAmount(type, total) {
         const totalAmount = $('.total-amount');
+        console.log("durl");
         const typeText = type === 'expense' ? '지출' : '수입';
         totalAmount.text(`${typeText} ${total.toLocaleString()}원`);
+
+        // 타입에 따라 색상 변경
+        if (type === 'expense') {
+            totalAmount.css('color', '#dc3545'); // 빨간색 (지출)
+        } else {
+            totalAmount.css('color', '#007bff'); // 파란색 (수입)
+        }
     }
 
+    // 차트 색상
     function generateRandomColors(count) {
         const colors = [];
         for (let i = 0; i < count; i++) {

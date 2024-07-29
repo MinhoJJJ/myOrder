@@ -57,8 +57,8 @@ public class signUpAndModifyServiceImpl implements signUpAndModifyService {
         String result = null;
         memberDto.setLang("KR");  // 언어기본값 한국어로 설정
         int chk=memberRepository.insertMember(memberDto);
-        chk+=categoryRepository.insertInComeCategory(memberDto.getId());
-        chk+=categoryRepository.insertExpenditureCategory(memberDto.getId());
+//        chk+=categoryRepository.insertInComeCategory(memberDto.getId());
+//        chk+=categoryRepository.insertExpenditureCategory(memberDto.getId());
 
         if(chk > 2){
             message="회원가입에 성공하였습니다..";

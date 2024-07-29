@@ -26,7 +26,6 @@ body {
 .total-amount {
     font-size: 32px;
     font-weight: bold;
-    color: #dc3545;
     margin: 30px 0;
 }
 
@@ -174,5 +173,13 @@ body {
         padding: 2px 5px;
         min-width: 40px;
         flex: 0 0 auto;
+    }
+
+    .expense-color {
+        color: #dc3545; /* 빨간색 (기존 색상) */
+    }
+
+    .income-color {
+        color: #007bff; /* 파란색 */
     }
 }
