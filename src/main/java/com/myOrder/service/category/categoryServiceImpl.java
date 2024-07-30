@@ -1,6 +1,4 @@
 package com.myOrder.service.category;
-
-import com.myOrder.dto.categoryDto;
 import com.myOrder.entity.Category;
 import com.myOrder.repositories.category.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;

@@ -11,8 +11,7 @@ $(document).ready(function () {
         insertCategoryName("E",categoryName,categoryColor)
     });
 
-    //카테고리 만들기
-
+    //카테고리 추가
     function insertCategoryName(gubun ,categoryName ,color){
 
         $.ajax({
@@ -21,7 +20,6 @@ $(document).ready(function () {
             data: { id: "wat", categoryName: categoryName, gubun: gubun, color: color},
             success: function (response) {
                 if (response.result == "S") {
-
                     // 성공한 경우 카테고리 입력란 초기화
                     if(gubun =='I'){
                         $('#newIncomeCategory').val("");

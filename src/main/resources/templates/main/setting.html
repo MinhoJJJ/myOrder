@@ -23,7 +23,6 @@
 <div id="app">
     <div th:replace="~{main/header :: header}"></div>
     <main class="container">
-        <h2 class="mb-4">설정</h2>
         <div class="card mb-4">
             <div class="card-body">
                 <form>
@@ -54,12 +53,20 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <h3 class="card-title">카테고리 설정</h3>
+                <h3 class="card-title">카테고리 추가</h3>
                 <div class="mb-3">
                     <label for="newIncomeCategory" class="form-label">수입 카테고리 추가:</label>
                     <div class="input-group">
                         <input type="color" id="newIncomeCategoryColor" name="newIncomeCategoryColor" class="form-control form-control-color" title="카테고리 색상 선택" style="width: 0%;">
-                        <input type="text" id="newIncomeCategory" name="newIncomeCategory" class="form-control" placeholder="카테고리 이름"style="width: 80%;">
+                        <input type="text" id="newIncomeMainCategory" name="newIncomeCategory" class="form-control" placeholder="대분류 카테고리 이름"style="width: 80%;">
+                        <button type="button" id="addIncomeMainCategoryButton" class="btn btn-success">추가</button>
+                    </div>
+                    <div class="input-group">
+                        <select id="selectIncomeMainCategory" class="form-select" style="width: 0%;">
+                            <option selected>대분류 선택</option>
+                            <!-- 여기에 대분류 카테고리 옵션들이 동적으로 추가될 것입니다 -->
+                        </select>
+                        <input type="text" id="newIncomeCategory" name="newIncomeCategory" class="form-control" placeholder="소분류 카테고리 이름"  style="width: 50%;">
                         <button type="button" id="addIncomeCategoryButton" class="btn btn-success">추가</button>
                     </div>
                 </div>
@@ -67,8 +74,42 @@
                     <label for="newExpenseCategory" class="form-label">지출 카테고리 추가:</label>
                     <div class="input-group">
                         <input type="color" id="newExpenseCategoryColor" name="newExpenseCategoryColor" class="form-control form-control-color" title="카테고리 색상 선택" style="width: 0%;">
-                        <input type="text" id="newExpenseCategory" name="newExpenseCategory" class="form-control" placeholder="카테고리 이름" style="width: 80%;">
+                        <input type="text" id="newExpenseMainCategory" name="newExpenseCategory" class="form-control" placeholder="대분류 카테고리 이름" style="width: 80%;">
+                        <button type="button" id="addExpenseMainCategoryButton" class="btn btn-success">추가</button>
+                    </div>
+                    <div class="input-group">
+                        <select id="selectExpenseMainCategory" class="form-select" style="width: 0%;">
+                            <option selected>대분류 선택</option>
+                            <!-- 여기에 대분류 카테고리 옵션들이 동적으로 추가될 것입니다 -->
+                        </select>
+                        <input type="text" id="newExpenseCategory" name="newExpenseCategory" class="form-control" placeholder="소분류 카테고리 이름" style="width: 50%;">
                         <button type="button" id="addExpenseCategoryButton" class="btn btn-success">추가</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">카테고리 변경</h3>
+                <div class="mb-3">
+                    <label for="newIncomeCategory" class="form-label">대분류 카테고리 변경:</label>
+                    <div class="input-group">
+                        <select id="selectMainCategory" class="form-select">
+                            <option selected>대분류 선택</option>
+                            <!-- 여기에 대분류 카테고리 옵션들이 동적으로 추가될 것입니다 -->
+                        </select>
+                        <button type="button" id="changeMainCategoryButton" class="btn btn-success">변경</button>
+                    </div>
+                    <div class="input-group">
+                        <select id="selectMainCategory2" class="form-select" style="width: 0%;">
+                            <option selected>대분류 선택</option>
+                            <!-- 여기에 대분류 카테고리 옵션들이 동적으로 추가될 것입니다 -->
+                        </select>
+                        <select id="selectSubCategory" class="form-select" style="width: 50%;">
+                            <option selected>소분류 선택</option>
+                            <!-- 여기에 대분류 카테고리 옵션들이 동적으로 추가될 것입니다 -->
+                        </select>
+                        <button type="button" id="changeSubCategoryButton" class="btn btn-success">변경</button>
                     </div>
                 </div>
             </div>
