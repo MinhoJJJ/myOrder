@@ -1,7 +1,13 @@
 .navbar-brand {
     font-weight: bold;
 }
+.gradient-background {
+    background: linear-gradient(90deg, #5e4bb5 0%, #2f5df3 40%, #3bbfc0 100%);
+}
 
+.navbar-nav .nav-item:last-child {
+    border-right: none;
+}
 #logoImg {
     width: 30px;  /* 원래 의도했던 크기로 보임 */
     height: 25px;

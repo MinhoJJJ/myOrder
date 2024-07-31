@@ -24,24 +24,38 @@ public class CategoryRepositoryImpl implements CustomCategoryRepository {
 
     @Override
     @Transactional
-    public int insertCategory(int index,String id,String gubun, String categoryName, String color, int number){
+    public int insertCategory(int index,String id, String type, String gubun, String main_category,String sub_category, String color){
 
-        // 동적 컬럼 이름 생성
-        String category = "category"+number;
-        String categoryColor = "color"+number;
+        //String query = String.format("INSERT INTO user_category (index, ID, TYPE, GUBUN, %s, %s) VALUES (?, ?, ?, ?, ?)", category,categoryColor);
+        if(type.equals("M")){
+            // 쿼리문 생성
+            String query = String.format("INSERT INTO user_category (index, ID, TYPE, GUBUN, MAIN_CATEGORY, MAIN_CATEGORY_COLOR) VALUES (?, ?, ?, ?, ?, ?");
 
-        // 쿼리 문자열 동적 생성
-        String query = String.format("INSERT INTO user_category (index, ID, GUBUN, %s, %s) VALUES (?, ?, ?, ?, ?)", category,categoryColor);
+            // 쿼리 실행
+            int rowsInserted = entityManager.createNativeQuery(query)
+                    .setParameter(1, index)
+                    .setParameter(2, id)
+                    .setParameter(3, type)
+                    .setParameter(4, gubun)
+                    .setParameter(5, main_category)
+                    .setParameter(6, color)
+                    .executeUpdate();
+            return 1;
+        }else{
+            // 쿼리문 생성
+            String query = String.format("INSERT INTO user_category (index, ID, TYPE, GUBUN, MAIN_CATEGORY, SUB_CATEGORY) VALUES (?, ?, ?, ?, ?, ?");
 
-        // 쿼리 실행
-        int rowsInserted = entityManager.createNativeQuery(query)
-                .setParameter(1, index)
-                .setParameter(2, id)
-                .setParameter(3, gubun)
-                .setParameter(4, categoryName)
-                .setParameter(5, color)
-                .executeUpdate();
-        return 1;
+            // 쿼리 실행
+            int rowsInserted = entityManager.createNativeQuery(query)
+                    .setParameter(1, index)
+                    .setParameter(2, id)
+                    .setParameter(3, type)
+                    .setParameter(4, gubun)
+                    .setParameter(5, main_category)
+                    .setParameter(6, sub_category)
+                    .executeUpdate();
+            return 1;
+        }
     }
 
     @Override
@@ -67,7 +81,18 @@ public class CategoryRepositoryImpl implements CustomCategoryRepository {
 
     @Override
     @Transactional
-    public Category findMyCategoryById(String id, String gubun){
+    public Category findMyCategoryById(String id, String type, String gubun, String main_category, String sub_category){
+        if(gubun.equals("M")){
+            BooleanBuilder builder = new BooleanBuilder();
+            builder.and(qCategory.id.eq(id));
+            builder.and(qCategory.gubun.eq(gubun));
+            builder.and(qCategory.gubun.eq(type));
+
+            return (Category) queryFactory
+                    .selectFrom(qCategory)
+                    .where(builder)
+                    .fetchOne();
+        }
 
         BooleanBuilder builder = new BooleanBuilder();
         builder.and(qCategory.id.eq(id));

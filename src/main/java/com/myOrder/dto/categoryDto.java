@@ -10,46 +10,14 @@ public class categoryDto {
 
     private String id;
 
-    private String gubun;                 //수입,지출 카테고리 구분
+    private String type;                 //수입,지출 카테고리 타입  (I: 수입 , E: 지출)
 
-    private String category1;
+    private String gubun;                //카테고리 대분류, 소분류 (M: 대분류 , S: 소분류)
 
-    private String category2;
+    private String main_category;        //대분류 카테고리
 
-    private String category3;
+    private String main_category_color;  //대분류 색상
 
-    private String category4;
-
-    private String category5;
-
-    private String category6;
-
-    private String category7;
-
-    private String category8;
-
-    private String category9;
-
-    private String category10;
-
-    private String color1;
-
-    private String color2;
-
-    private String color3;
-
-    private String color4;
-
-    private String color5;
-
-    private String color6;
-
-    private String color7;
-
-    private String color8;
-
-    private String color9;
-
-    private String color10;
+    private String sub_category;         //소분류 카테고리
 
 }

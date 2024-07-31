@@ -6,10 +6,8 @@ import org.springframework.stereotype.Service;
 @Service
 public interface categoryService{
 
-    int addOrUpdateCategory(String id, String gubun, String categoryName, String color) throws Exception;
+    int addCategory(String id,String type, String gubun, String main_category, String sub_category, String color) throws Exception;
 
     int generateNextIndex() throws Exception;
-
-    int findNullCategories(Category Category) throws Exception;
 
 }

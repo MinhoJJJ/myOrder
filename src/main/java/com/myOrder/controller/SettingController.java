@@ -18,11 +18,13 @@ public class SettingController {
     categoryService categoryService;
 
     //카테고리 추가
-      @RequestMapping("/insertCategoryName.do")
-      public HashMap<String, Object> insertCategoryName(
+      @RequestMapping("/addCategory.do")
+      public HashMap<String, Object> addCategory(
               @RequestParam String id ,
+              @RequestParam String type,
               @RequestParam String gubun,
-              @RequestParam String categoryName,
+              @RequestParam String main_category,
+              @RequestParam String sub_category,
               @RequestParam String color)
       {
 
@@ -31,7 +33,7 @@ public class SettingController {
           try {
 
               // 서비스단으로 이동
-              int cnt=categoryService.addOrUpdateCategory(id,gubun, categoryName, color);
+              int cnt=categoryService.addCategory(id, type, gubun, main_category, sub_category, color);
               if(cnt == 0){
                   response.put("result", "F");
                   response.put("message", "카테고리 추가에 실패하였습니다.");

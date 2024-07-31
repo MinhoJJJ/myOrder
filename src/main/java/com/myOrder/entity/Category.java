@@ -20,67 +20,23 @@ public class Category {
     @Column(name = "ID", length = 100)
     private String id;
 
-    //수입,지출 카테고리 구분
-    @Column(name = "GUBUN", length = 50)
+    //수입,지출 카테고리 타입  (I: 수입 , E: 지출)
+    @Column(name = "TYPE", length = 10)
+    private String type;
+
+    //카테고리 대분류, 소분류 (M: 대분류 , S: 소분류)
+    @Column(name = "GUBUN", length = 10)
     private String gubun;
 
-    @Column(name = "CATEGORY1", length = 50)
-    private String category1;
+    //대분류 카테고리
+    @Column(name = "MAIN_CATEGORY", length = 1000)
+    private String main_category;
 
-    @Column(name = "CATEGORY2", length = 50)
-    private String category2;
+    //대분류 색상
+    @Column(name = "MAIN_CATEGORY_COLOR", length = 1000)
+    private String main_category_color;
 
-    @Column(name = "CATEGORY3", length = 50)
-    private String category3;
-
-    @Column(name = "CATEGORY4", length = 50)
-    private String category4;
-
-    @Column(name = "CATEGORY5", length = 50)
-    private String category5;
-
-    @Column(name = "CATEGORY6", length = 50)
-    private String category6;
-
-    @Column(name = "CATEGORY7", length = 50)
-    private String category7;
-
-    @Column(name = "CATEGORY8", length = 50)
-    private String category8;
-
-    @Column(name = "CATEGORY9", length = 50)
-    private String category9;
-
-    @Column(name = "CATEGORY10", length = 50)
-    private String category10;
-
-    @Column(name = "COLOR1", length = 20)
-    private String color1;
-
-    @Column(name = "COLOR2", length = 20)
-    private String color2;
-
-    @Column(name = "COLOR3", length = 20)
-    private String color3;
-
-    @Column(name = "COLOR4", length = 20)
-    private String color4;
-
-    @Column(name = "COLOR5", length = 20)
-    private String color5;
-
-    @Column(name = "COLOR6", length = 20)
-    private String color6;
-
-    @Column(name = "COLOR7", length = 20)
-    private String color7;
-
-    @Column(name = "COLOR8", length = 20)
-    private String color8;
-
-    @Column(name = "COLOR9", length = 20)
-    private String color9;
-
-    @Column(name = "COLOR10", length = 20)
-    private String color10;
+    //소분류 카테고리
+    @Column(name = "SUB_CATEGORY", length = 1000)
+    private String sub_category;
 }
