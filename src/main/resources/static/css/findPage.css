@@ -1,0 +1,179 @@
+/* static/css/setting.css */
+body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#app {
+    flex: 1;
+}
+
+.container {
+    max-width: 800px;
+    padding-bottom: 1rem;
+    margin-left: 5px;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1rem;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    color: #0d6efd;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-success {
+    background-color: #1590d2;
+    border-color: #1590d2;
+}
+
+.btn-danger {
+    background-color: #509191;
+    border-color: #509191;
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.input-group {
+    margin-bottom: 0.75rem;
+}
+
+.input-group .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.single-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.form-control {
+    flex: 1;
+}
+.btn {
+    flex-shrink: 0;
+}
+.red-text {
+    color: red;
+}
+.blue-text {
+    color: blue;
+}
+.textarea-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: 120%;
+}
+
+.textarea-container .form-control {
+    flex: 3; /* Make textarea 3 times wider compared to other elements */
+    height: 350px; /* Increase height for larger textareas */
+    min-width: 100%; /* Prevent overflow */
+}
+
+.flex-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows items to wrap to the next line if there's not enough space */
+}
+
+.flex-item {
+    flex: 1 1 48%; /* Allows items to grow and shrink, and takes up approximately 48% of the container width */
+    min-width: 0; /* Prevents flex items from overflowing their container */
+    margin-left: 10px;
+
+}
+
+.flex-item h3 {
+    text-align: center; /* Center the headings for better alignment */
+}
+#contentB-b {
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 350px; /* Adjust the max height as needed */
+    border: 1px solid #ced4da; /* Optional: add border to make it look like a textarea */
+    padding: 0.5rem; /* Optional: add some padding for better spacing */
+}
+#unicodeInput, #unicodeOutput {
+    width: 100%;
+}
+
+.result-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.result-container p {
+    margin-bottom: 0.5rem;
+}
+#unicodeOutput {
+    height: 100px;
+}
+.result-container p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.result-container p strong {
+    width: 150px;
+}
+
+.result-container p span {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.result-container p button {
+    flex-shrink: 0;
+}
+.property-value {
+    font-weight: bold;
+    margin-left: 5px;
+}
+code {
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .textarea-container {
+        flex-direction: column;
+    }
+
+    .textarea-container .form-control {
+        width: 200%; /* Make textarea full width on small screens */
+        height: auto; /* Adjust height for small screens */
+    }
+}

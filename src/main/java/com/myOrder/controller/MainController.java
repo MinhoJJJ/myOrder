@@ -171,4 +171,23 @@ public class MainController {
         return modelAndView;
     }
 
+    /**
+     * 페이지분석 페이지 이동
+     * @return ModelAndView
+     * @throws Exception
+     * @author 정민호
+     * @since 2024. 06. 13.
+     */
+    @RequestMapping("/findPage.do")
+    public ModelAndView moveFindPage(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, HttpServletRequest request) {
+        ModelAndView modelAndView;
+        modelAndView = new ModelAndView("main/findPage");
+        HttpSession session = request.getSession(true);
+
+        modelAndView.addObject("error", error);
+        modelAndView.addObject("exception", exception);
+
+        return modelAndView;
+    }
+
 }

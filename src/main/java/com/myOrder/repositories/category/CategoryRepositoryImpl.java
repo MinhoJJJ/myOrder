@@ -12,6 +12,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor   //생성자를 자동으로 만들어주는 어노테이션
 public class CategoryRepositoryImpl implements CustomCategoryRepository {
@@ -27,9 +28,9 @@ public class CategoryRepositoryImpl implements CustomCategoryRepository {
     public int insertCategory(int index,String id, String type, String gubun, String main_category,String sub_category, String color){
 
         //String query = String.format("INSERT INTO user_category (index, ID, TYPE, GUBUN, %s, %s) VALUES (?, ?, ?, ?, ?)", category,categoryColor);
-        if(type.equals("M")){
+        if(gubun.equals("M")){
             // 쿼리문 생성
-            String query = String.format("INSERT INTO user_category (index, ID, TYPE, GUBUN, MAIN_CATEGORY, MAIN_CATEGORY_COLOR) VALUES (?, ?, ?, ?, ?, ?");
+            String query = String.format("INSERT INTO user_category (index, ID, TYPE, GUBUN, MAIN_CATEGORY, MAIN_CATEGORY_COLOR) VALUES (?, ?, ?, ?, ?, ?)");
 
             // 쿼리 실행
             int rowsInserted = entityManager.createNativeQuery(query)
@@ -43,7 +44,7 @@ public class CategoryRepositoryImpl implements CustomCategoryRepository {
             return 1;
         }else{
             // 쿼리문 생성
-            String query = String.format("INSERT INTO user_category (index, ID, TYPE, GUBUN, MAIN_CATEGORY, SUB_CATEGORY) VALUES (?, ?, ?, ?, ?, ?");
+            String query = String.format("INSERT INTO user_category (index, ID, TYPE, GUBUN, MAIN_CATEGORY, SUB_CATEGORY) VALUES (?, ?, ?, ?, ?, ?)");
 
             // 쿼리 실행
             int rowsInserted = entityManager.createNativeQuery(query)
@@ -85,8 +86,8 @@ public class CategoryRepositoryImpl implements CustomCategoryRepository {
         if(gubun.equals("M")){
             BooleanBuilder builder = new BooleanBuilder();
             builder.and(qCategory.id.eq(id));
+            builder.and(qCategory.type.eq(type));
             builder.and(qCategory.gubun.eq(gubun));
-            builder.and(qCategory.gubun.eq(type));
 
             return (Category) queryFactory
                     .selectFrom(qCategory)
@@ -102,5 +103,33 @@ public class CategoryRepositoryImpl implements CustomCategoryRepository {
                 .selectFrom(qCategory)
                 .where(builder)
                 .fetchOne();
+    }
+
+    @Override
+    @Transactional
+    public List<String> findMyCategoryListById(String id, String type, String gubun, String main_category){
+        if(gubun.equals("M")){
+            BooleanBuilder builder = new BooleanBuilder();
+            builder.and(qCategory.id.eq(id));
+            builder.and(qCategory.type.eq(type));
+            builder.and(qCategory.gubun.eq(gubun));
+
+            return queryFactory
+                    .select(qCategory.main_category)
+                    .from(qCategory)
+                    .where(builder)
+                    .fetch();
+        }
+
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(qCategory.id.eq(id));
+        builder.and(qCategory.type.eq(type));
+        builder.and(qCategory.gubun.eq(gubun));
+
+        return queryFactory
+                .select(qCategory.main_category)
+                .from(qCategory)
+                .where(builder)
+                .fetch();
     }
 }
