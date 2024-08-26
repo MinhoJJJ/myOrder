@@ -52,41 +52,5 @@ public class SettingController {
 
           return response;
       }
-    //내 카테고리 불러오기
-    @RequestMapping("/findMyCategoryListById.do")
-    public HashMap<String, Object> findMyCategoryListById(@RequestParam String id) {
-
-        HashMap<String, Object> response = new HashMap<>();
-
-        try {
-
-//            // 대분류 지출 카테고리 불러오기
-//            int cnt=categoryService.findMyCategoryListById(id);
-//            // 소분류 지출 카테고리 불러오기
-//            int cnt=categoryService.findMyCategoryListById(id);
-//            // 대분류 수입 카테고리 불러오기
-//            int cnt=categoryService.findMyCategoryListById(id);
-//            // 소분류 수입 카테고리 불러오기
-//
-//            int cnt=categoryService.findMyCategoryListById(id);
-            int cnt=0;
-            if(cnt == 0){
-                response.put("result", "F");
-                response.put("message", "카테고리 추가에 실패하였습니다.");
-            }else if(cnt == 9){
-                response.put("result", "F");
-                response.put("message", "카테고리 갯수가 최대입니다. (10개)");
-            }else{
-                response.put("result", "S");
-                response.put("message", "카테고리 추가에 성공하였습니다.");
-            }
-            response.put("result", "S");
-        } catch (Exception e) {
-            response.put("result", "F");
-            response.put("message", e.getMessage());
-        }
-
-        return response;
-    }
 
 }
